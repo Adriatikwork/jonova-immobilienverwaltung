@@ -1,44 +1,44 @@
 {
-  "name": "JONOVA Immobilienverwaltung",
-  "short_name": "JONOVA",
-  "description": "Persönliche Verwaltung von Mietliegenschaften in der Schweiz — erreichbar, klare Abläufe, kaufmännisch und technisch.",
-  "start_url": "./",
-  "scope": "./",
-  "display": "standalone",
-  "background_color": "#F3F5F3",
-  "theme_color": "#2E5946",
-  "orientation": "any",
-  "dir": "ltr",
-  "lang": "de-CH",
-  "categories": ["business", "finance"],
-  "prefer_related_applications": false,
+  "name": "JONOVA Immobilienverwaltung", 
+  "short_name": "JONOVA", 
+  "description": "Persönliche Verwaltung von Mietliegenschaften in der Schweiz. Erreichbar, klare Abläufe, kaufmännisch und technisch.", 
+  "start_url": "./", 
+  "scope": "./", 
+  "display": "standalone", 
+  "background_color": "#F3F5F3", 
+  "theme_color": "#2E5946", 
+  "orientation": "any", 
+  "dir": "ltr", 
+  "lang": "de-CH", 
+  "categories": ["business", "finance"], 
+  "prefer_related_applications": false, 
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "16x16 32x32 48x48",
+      "src": "favicon.ico", 
+      "sizes": "16x16 32x32 48x48", 
       "type": "image/x-icon"
-    },
+    }, 
     {
-      "src": "icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "icon.svg", 
+      "sizes": "any", 
+      "type": "image/svg+xml", 
       "purpose": "any"
-    },
+    }, 
     {
-      "src": "apple-touch-icon.png",
-      "sizes": "180x180",
+      "src": "apple-touch-icon.png", 
+      "sizes": "180x180", 
       "type": "image/png"
-    },
+    }, 
     {
-      "src": "icon.svg",
-      "sizes": "192x192",
-      "type": "image/svg+xml",
+      "src": "icon.svg", 
+      "sizes": "192x192", 
+      "type": "image/svg+xml", 
       "purpose": "any maskable"
-    },
+    }, 
     {
-      "src": "icon.svg",
-      "sizes": "512x512",
-      "type": "image/svg+xml",
+      "src": "icon.svg", 
+      "sizes": "512x512", 
+      "type": "image/svg+xml", 
       "purpose": "any maskable"
     }
   ]

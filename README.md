@@ -9,7 +9,7 @@ pnpm install
 pnpm dev
 ```
 
-## Contact form (EmailJS — same as Fahrschule)
+## Contact form (EmailJS, same as Fahrschule)
 
 The form uses `@emailjs/browser`. Set your JONOVA EmailJS IDs in `.env.local` (or edit `lib/emailjs.ts`):
 
@@ -34,13 +34,13 @@ Output lands in `out/`.
 ## GitHub Pages setup
 
 1. Create a **public** GitHub repo named exactly: `jonova-immobilienverwaltung`
-2. Prefer account **Adriatikwork** (clean `*.github.io` URLs — not Fahrschule custom domain)
+2. Prefer account **Adriatikwork** (clean `*.github.io` URLs, not Fahrschule custom domain)
 3. Push this folder to `main`
 4. Repo → **Settings → Pages** → Source: **GitHub Actions**
 5. Live URL:
    `https://adriatikwork.github.io/jonova-immobilienverwaltung/`
 
-## Docker (optional — local only)
+## Docker (optional, local only)
 
 ```bash
 pnpm docker:dev    # hot reload on :8915
@@ -56,7 +56,7 @@ Already wired (Fahrschule-level, without a registered domain yet):
 - JSON-LD: LocalBusiness + ProfessionalService, WebSite, 4× Service (no FAQ/hreflang until real)
 - `sitemap.ts` + `robots.txt` + `manifest.json`
 - `og-image.jpg` (1200×630), apple-touch icon, favicon
-- Canonical only (DE|EN is a client toggle on one URL — no fake hreflang)
+- Canonical only (DE|EN is a client toggle on one URL, no fake hreflang)
 - Country-level geo (`CH`) until client provides exact address / coordinates
 - Phone hidden until set in `lib/site.ts` (`CONTACT.phoneE164`)
 - 404 is `noindex`

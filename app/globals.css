@@ -54,7 +54,7 @@
 }
 
 /*
- * JONOVA Palette — alpine stone + forest trust
+ * JONOVA Palette, alpine stone + forest trust
  * Cooler than cream/serif AI templates; still Swiss and calm.
  */
 :root {
@@ -125,7 +125,7 @@
   }
 }
 
-/* Subtle film grain — React Bits Noise inspiration, CSS-only */
+/* Subtle film grain, React Bits Noise inspiration, CSS-only */
 .noise-overlay::after {
   content: '';
   pointer-events: none;
@@ -133,7 +133,7 @@
   inset: 0;
   opacity: 0.045;
   mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml, %3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
   z-index: 2;
 }
@@ -212,8 +212,7 @@
   background: currentColor;
   transition: width 0.25s ease;
 }
-.nav-link:hover::after,
-.nav-link:focus-visible::after {
+.nav-link:hover::after.nav-link:focus-visible::after {
   width: 100%;
 }
 

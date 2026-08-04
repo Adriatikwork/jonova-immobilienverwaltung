@@ -9,33 +9,33 @@ const steps = [
     titleDe: 'Erstgespräch',
     titleEn: 'Initial conversation',
     bodyDe:
-      'Wir besprechen Ihre Liegenschaft, Ihre Erwartungen und was heute nicht funktioniert — unverbindlich und ohne Druck.',
+      'Wir besprechen Ihre Liegenschaft, Ihre Erwartungen und was heute nicht funktioniert. Unverbindlich und ohne Druck.',
     bodyEn:
-      'We discuss your property, your expectations and what is not working today — no obligation, no pressure.',
+      'We discuss your property, your expectations and what is not working today. No obligation, no pressure.',
   },
   {
     titleDe: 'Individuelle Offerte',
     titleEn: 'Tailored proposal',
     bodyDe:
-      'Sie erhalten ein transparentes Angebot zum vereinbarten Leistungsumfang — nachvollziehbar und auf Ihre Situation abgestimmt.',
+      'Sie erhalten ein transparentes Angebot zum vereinbarten Leistungsumfang, nachvollziehbar und auf Ihre Situation abgestimmt.',
     bodyEn:
-      'You receive a transparent offer for the agreed scope — clear and tailored to your situation.',
+      'You receive a transparent offer for the agreed scope, clear and tailored to your situation.',
   },
   {
     titleDe: 'Übernahme',
     titleEn: 'Handover',
     bodyDe:
-      'Nach der Beauftragung übernehmen wir Unterlagen, Abläufe und die vereinbarten Verwaltungsaufgaben — ruhig und strukturiert.',
+      'Nach der Beauftragung übernehmen wir Unterlagen, Abläufe und die vereinbarten Verwaltungsaufgaben. Ruhig und strukturiert.',
     bodyEn:
-      'Once commissioned we take over documents, processes and the agreed management tasks — calmly and in a structured way.',
+      'Once commissioned we take over documents, processes and the agreed management tasks. Calmly and in a structured way.',
   },
   {
     titleDe: 'Laufende Betreuung',
     titleEn: 'Ongoing support',
     bodyDe:
-      'Wir bleiben Ihr Ansprechpartner im Alltag: Mieter, Unterhalt, Organisation — damit Sie nicht nachfragen müssen.',
+      'Wir bleiben Ihr Ansprechpartner im Alltag: Mieter, Unterhalt, Organisation. Damit Sie nicht nachfragen müssen.',
     bodyEn:
-      'We remain your contact in day-to-day operations: tenants, maintenance, organisation — so you do not have to chase.',
+      'We remain your contact in day-to-day operations: tenants, maintenance, organisation. So you do not have to chase.',
   },
 ]
 
@@ -61,8 +61,8 @@ export function Ablauf() {
           </h2>
           <p className="mt-4 text-base text-ink-muted leading-relaxed">
             {t(
-              'Von der ersten Anfrage bis zum Alltag — ohne Formular-Pingpong.',
-              'From the first enquiry to day-to-day operations — without form ping-pong.'
+              'Von der ersten Anfrage bis zum Alltag, ohne Formular-Pingpong.',
+              'From the first enquiry to day-to-day operations, without form ping-pong.'
             )}
           </p>
         </Reveal>

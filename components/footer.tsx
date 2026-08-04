@@ -36,8 +36,8 @@ export function Footer() {
             </div>
             <p className="text-sm leading-relaxed text-primary-foreground/60 text-pretty">
               {t(
-                'Persönliche Verwaltung von Mietliegenschaften in der Schweiz — erreichbar, klar, sorgfältig.',
-                'Personal management of rental properties in Switzerland — reachable, clear, careful.'
+                'Persönliche Verwaltung von Mietliegenschaften in der Schweiz. Erreichbar, klar, sorgfältig.',
+                'Personal management of rental properties in Switzerland. Reachable, clear, careful.'
               )}
             </p>
           </div>

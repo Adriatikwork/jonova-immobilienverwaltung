@@ -12,9 +12,9 @@ const services = [
     titleDe: 'Verwaltung von Mietliegenschaften',
     titleEn: 'Rental property management',
     summaryDe:
-      'Laufende Betreuung Ihrer Liegenschaft — von der Mieterkommunikation bis zur Organisation des täglichen Betriebs, damit Sie den Überblick behalten ohne den Alltag zu führen.',
+      'Laufende Betreuung Ihrer Liegenschaft: von der Mieterkommunikation bis zur Organisation des täglichen Betriebs, damit Sie den Überblick behalten ohne den Alltag zu führen.',
     summaryEn:
-      'Ongoing care of your property — from tenant communication to organising day-to-day operations, so you keep the overview without running the daily grind.',
+      'Ongoing care of your property: from tenant communication to organising day-to-day operations, so you keep the overview without running the daily grind.',
     itemsDe: null as string[] | null,
     itemsEn: null as string[] | null,
   },
@@ -24,9 +24,9 @@ const services = [
     titleDe: 'Kaufmännische Verwaltung',
     titleEn: 'Commercial administration',
     summaryDe:
-      'Strukturierte finanzielle und administrative Betreuung — damit Abrechnungen und Vorgänge nachvollziehbar bleiben.',
+      'Strukturierte finanzielle und administrative Betreuung, damit Abrechnungen und Vorgänge nachvollziehbar bleiben.',
     summaryEn:
-      'Structured financial and administrative management — so accounts and cases stay understandable.',
+      'Structured financial and administrative management, so accounts and cases stay understandable.',
     itemsDe: [
       'Verwaltung von Mietverhältnissen',
       'Korrespondenz mit Mietern',
@@ -48,9 +48,9 @@ const services = [
     titleDe: 'Technische Betreuung',
     titleEn: 'Technical maintenance',
     summaryDe:
-      'Koordination von Unterhalt und Instandhaltung mit Handwerksbetrieben — proaktiv und dokumentiert, nicht nur im Notfall.',
+      'Koordination von Unterhalt und Instandhaltung mit Handwerksbetrieben, proaktiv und dokumentiert, nicht nur im Notfall.',
     summaryEn:
-      'Coordination of maintenance and upkeep with tradespeople — proactive and documented, not only in emergencies.',
+      'Coordination of maintenance and upkeep with tradespeople, proactive and documented, not only in emergencies.',
     itemsDe: [
       'Koordination von Unterhaltsarbeiten',
       'Organisation von Reparaturen',
@@ -70,9 +70,9 @@ const services = [
     titleDe: 'Vermietung',
     titleEn: 'Letting & tenant placement',
     summaryDe:
-      'Von der Vermarktung bis zur Wohnungsübergabe — damit Leerstand kurz bleibt und der Prozess sauber dokumentiert ist.',
+      'Von der Vermarktung bis zur Wohnungsübergabe, damit Leerstand kurz bleibt und der Prozess sauber dokumentiert ist.',
     summaryEn:
-      'From marketing to key handover — so vacancy stays short and the process is cleanly documented.',
+      'From marketing to key handover, so vacancy stays short and the process is cleanly documented.',
     itemsDe: [
       'Vermarktung freier Objekte',
       'Organisation von Besichtigungen',
@@ -187,8 +187,8 @@ export function Leistungen() {
           </h2>
           <p className="mt-4 text-base text-ink-muted leading-relaxed">
             {t(
-              'Kein Feature-Katalog um der Vollständigkeit willen — sondern die Aufgaben, die Eigentümer entlasten.',
-              'Not a feature catalogue for completeness — the tasks that actually relieve owners.'
+              'Kein Feature-Katalog um der Vollständigkeit willen, sondern die Aufgaben, die Eigentümer entlasten.',
+              'Not a feature catalogue for completeness, but the tasks that actually relieve owners.'
             )}
           </p>
         </Reveal>

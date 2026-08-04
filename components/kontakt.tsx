@@ -66,8 +66,8 @@ export function Kontakt() {
         {
           from_name: fields.name,
           from_email: fields.email,
-          phone: fields.phone || '—',
-          property_type: fields.liegenschaft || '—',
+          phone: fields.phone || '-',
+          property_type: fields.liegenschaft || '-',
           message: fields.nachricht,
           to_name: SITE_NAME,
         },
@@ -104,8 +104,8 @@ export function Kontakt() {
               className="font-sans font-semibold text-3xl md:text-4xl lg:text-[2.75rem] tracking-tight text-foreground leading-[1.15] text-balance mb-5"
             >
               {t(
-                'Sprechen Sie mit uns — persönlich.',
-                'Talk to us — personally.'
+                'Sprechen Sie persönlich mit uns.',
+                'Talk to us personally.'
               )}
             </h2>
             <p className="text-base leading-relaxed text-ink-muted text-pretty mb-10 max-w-prose">
@@ -150,8 +150,8 @@ export function Kontakt() {
                   </a>
                   <p className="text-xs text-ink-muted mt-1">
                     {t(
-                      'Antwort persönlich — kein Ticket-Pingpong',
-                      'Personal reply — no ticket ping-pong'
+                      'Antwort persönlich, kein Ticket-Pingpong',
+                      'Personal reply, no ticket ping-pong'
                     )}
                   </p>
                 </div>

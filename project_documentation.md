@@ -1,4 +1,4 @@
-# JONOVA Immobilienverwaltung — Project Documentation
+# JONOVA Immobilienverwaltung, Project Documentation
 
 ## Feature: Legal pages + SEO hardening
 
@@ -6,13 +6,13 @@
 Added Swiss Impressum and Datenschutz pages (structure aligned with Fahrschule 06 pattern on adriatik-isufi.github.io, styled in JONOVA design). FAQ content centralized for UI + FAQPage schema. Sitemap extended. Footer legal links wired. Scroll-margin for fixed nav anchors.
 
 ### Location
-- `app/impressum/` — Impressum
-- `app/datenschutz/` — Datenschutzerklärung (nDSG + EmailJS/GitHub Pages disclosure)
-- `components/legal-chrome.tsx` — shared legal nav/footer
-- `lib/faq-content.ts` — shared FAQ
-- `lib/site.ts` — `LEGAL` fields for future NAP / UID
-- `components/json-ld.tsx` — Organization, WebSite, WebPage, FAQPage, Services
-- `app/sitemap.ts` — home + legal URLs
+- `app/impressum/`, Impressum
+- `app/datenschutz/`, Datenschutzerklärung (nDSG + EmailJS/GitHub Pages disclosure)
+- `components/legal-chrome.tsx`, shared legal nav/footer
+- `lib/faq-content.ts`, shared FAQ
+- `lib/site.ts`, `LEGAL` fields for future NAP / UID
+- `components/json-ld.tsx`, Organization, WebSite, WebPage, FAQPage, Services
+- `app/sitemap.ts`, home + legal URLs
 
 ### Configuration
 Fill `LEGAL.*` and `CONTACT.phone*` in `lib/site.ts` when the client provides registration details.
@@ -22,14 +22,14 @@ Fill `LEGAL.*` and `CONTACT.phone*` in `lib/site.ts` when the client provides re
 Repositioned the marketing site from generic Verwaltung adjectives to an owner-trust narrative focused on reachability, clear processes, and personal enquiry conversion. Inspired by Swiss competitor patterns (Resonus, KAMA), property-management website research (owner vs tenant paths, trust signals), and common Eigentümer complaints (Erreichbarkeit, Abrechnungen, Wechsel).
 
 ### Location
-- `app/page.tsx` — section composition
-- `app/globals.css` — alpine stone palette, grain, reveal + hero motion
-- `components/hero.tsx` — full-bleed place-first hero
-- `components/eigentuemer.tsx` — owner-path CTAs
-- `components/warum-jonova.tsx` — outcome-led trust section
-- `components/faq.tsx` — owner FAQ
-- `components/inquiry-context.tsx` — prefill enquiry from owner path
-- `components/reveal.tsx` — lightweight scroll reveal (no extra deps)
+- `app/page.tsx`, section composition
+- `app/globals.css`, alpine stone palette, grain, reveal + hero motion
+- `components/hero.tsx`, full-bleed place-first hero
+- `components/eigentuemer.tsx`, owner-path CTAs
+- `components/warum-jonova.tsx`, outcome-led trust section
+- `components/faq.tsx`, owner FAQ
+- `components/inquiry-context.tsx`, prefill enquiry from owner path
+- `components/reveal.tsx`, lightweight scroll reveal (no extra deps)
 - Remaining sections updated: `leistungen`, `ablauf`, `ueber-uns`, `kontakt`, `nav`, `footer`
 
 ### Configuration

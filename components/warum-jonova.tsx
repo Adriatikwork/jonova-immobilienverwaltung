@@ -9,38 +9,38 @@ const outcomes = [
   {
     number: '01',
     titleDe: 'Erreichbarkeit statt Hotline',
-    titleEn: 'Reachable — not a hotline',
+    titleEn: 'Reachable, not a hotline',
     bodyDe:
-      'Ein direkter Ansprechpartner begleitet Sie — ohne anonymes Callcenter. Erreichbarkeit ist für Eigentümer der häufigste Grund zu wechseln.',
+      'Ein direkter Ansprechpartner begleitet Sie, ohne anonymes Callcenter. Erreichbarkeit ist für Eigentümer der häufigste Grund zu wechseln.',
     bodyEn:
-      'A direct contact accompanies you — no anonymous call centre. Reachability is the most common reason owners switch.',
+      'A direct contact accompanies you, not an anonymous call centre. Reachability is the most common reason owners switch.',
   },
   {
     number: '02',
     titleDe: 'Abrechnungen ohne Rätselraten',
     titleEn: 'Accounts without guesswork',
     bodyDe:
-      'Klare Abläufe und nachvollziehbare Kommunikation zu Mieten, Kosten und Vorgängen — damit Sie nicht hinterherlaufen müssen.',
+      'Klare Abläufe und nachvollziehbare Kommunikation zu Mieten, Kosten und Vorgängen, damit Sie nicht hinterherlaufen müssen.',
     bodyEn:
-      'Clear processes and understandable communication on rents, costs and cases — so you do not have to chase updates.',
+      'Clear processes and understandable communication on rents, costs and cases, so you do not have to chase updates.',
   },
   {
     number: '03',
     titleDe: 'Alltag aus einer Hand',
     titleEn: 'Day-to-day from one desk',
     bodyDe:
-      'Mieteranliegen, Handwerkerkoordination und organisatorische Verwaltung — strukturiert, digital und lösungsorientiert.',
+      'Mieteranliegen, Handwerkerkoordination und organisatorische Verwaltung: strukturiert, digital und lösungsorientiert.',
     bodyEn:
-      'Tenant requests, trades coordination and organisational management — structured, digital and solution-oriented.',
+      'Tenant requests, trades coordination and organisational management: structured, digital and solution-oriented.',
   },
   {
     number: '04',
     titleDe: 'Werterhalt im Blick',
     titleEn: 'Value preservation in focus',
     bodyDe:
-      'Unterhalt und Vermietung mit dem Ziel, Ihre Liegenschaft langfristig sorgfältig zu betreuen — nicht nur Probleme abzuarbeiten.',
+      'Unterhalt und Vermietung mit dem Ziel, Ihre Liegenschaft langfristig sorgfältig zu betreuen, nicht nur Probleme abzuarbeiten.',
     bodyEn:
-      'Maintenance and letting with the aim of carefully looking after your property long-term — not only fixing problems.',
+      'Maintenance and letting with the aim of carefully looking after your property long-term, not only fixing problems.',
   },
 ]
 

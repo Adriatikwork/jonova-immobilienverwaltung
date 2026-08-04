@@ -21,14 +21,14 @@ export function Faq() {
               className="font-sans font-semibold text-3xl md:text-4xl tracking-tight text-foreground leading-[1.15] text-balance mb-4"
             >
               {t(
-                'Fragen, die Eigentümer wirklich stellen.',
+                'Fragen, die Eigentümer wirklich stellen.', 
                 'Questions owners actually ask.'
               )}
             </h2>
             <p className="text-sm leading-relaxed text-ink-muted max-w-sm">
               {t(
-                'Kosten, Wechsel und Erreichbarkeit entscheiden — nicht Werbeslogans.',
-                'Cost, switching and reachability decide — not slogans.'
+                'Kosten, Wechsel und Erreichbarkeit entscheiden. Nicht Werbeslogans.',
+                'Cost, switching and reachability decide. Not slogans.'
               )}
             </p>
           </Reveal>

@@ -16,14 +16,14 @@ const paths: {
   ctaEn: string
 }[] = [
   {
-    type: 'mfh',
-    icon: Building2,
-    titleDe: 'Mehrfamilienhaus',
-    titleEn: 'Apartment building',
+    type: 'mfh', 
+    icon: Building2, 
+    titleDe: 'Mehrfamilienhaus', 
+    titleEn: 'Apartment building', 
     bodyDe:
-      'Sie wollen die laufende Verwaltung abgeben — Mieterkommunikation, Unterhalt und Organisation aus einer Hand.',
+      'Sie wollen die laufende Verwaltung abgeben: Mieterkommunikation, Unterhalt und Organisation aus einer Hand.',
     bodyEn:
-      'You want to hand over day-to-day management — tenant communication, maintenance and organisation in one place.',
+      'You want to hand over day-to-day management: tenant communication, maintenance and organisation in one place.',
     ctaDe: 'Anfrage für MFH',
     ctaEn: 'Enquire for building',
   },
@@ -33,9 +33,9 @@ const paths: {
     titleDe: 'Wohnung vermieten',
     titleEn: 'Letting a flat',
     bodyDe:
-      'Sie vermieten nebenher oder haben eine einzelne Einheit — und brauchen Entlastung ohne Unternehmenskomplexität.',
+      'Sie vermieten nebenher oder haben eine einzelne Einheit und brauchen Entlastung ohne Unternehmenskomplexität.',
     bodyEn:
-      'You let on the side or own a single unit — and want relief without corporate complexity.',
+      'You let on the side or own a single unit and want relief without corporate complexity.',
     ctaDe: 'Anfrage für Wohnung',
     ctaEn: 'Enquire for flat',
   },
@@ -45,9 +45,9 @@ const paths: {
     titleDe: 'Kleines Portfolio',
     titleEn: 'Small portfolio',
     bodyDe:
-      'Mehrere Objekte, kurze Wege und ein Ansprechpartner der den Überblick behält — ohne anonyme Hotline.',
+      'Mehrere Objekte, kurze Wege und ein Ansprechpartner der den Überblick behält, ohne anonyme Hotline.',
     bodyEn:
-      'Several properties, short paths and one contact who keeps the overview — no anonymous hotline.',
+      'Several properties, short paths and one contact who keeps the overview, without an anonymous hotline.',
     ctaDe: 'Anfrage für Portfolio',
     ctaEn: 'Enquire for portfolio',
   },
@@ -79,8 +79,8 @@ export function Eigentuemer() {
           </h2>
           <p className="mt-4 text-base text-ink-muted leading-relaxed max-w-prose">
             {t(
-              'Wählen Sie Ihre Ausgangslage — wir führen Sie direkt zur passenden Anfrage.',
-              'Choose your starting point — we take you straight to the right enquiry.'
+              'Wählen Sie Ihre Ausgangslage. Wir führen Sie direkt zur passenden Anfrage.',
+              'Choose your starting point. We take you straight to the right enquiry.'
             )}
           </p>
         </Reveal>

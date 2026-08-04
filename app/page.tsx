@@ -1,5 +1,5 @@
 /*
- * JONOVA Immobilienverwaltung — Landing Page
+ * JONOVA Immobilienverwaltung, Landing Page
  *
  * Redesign direction (2026):
  * - Specific owner promise over adjectives (reachability, clear accounts)

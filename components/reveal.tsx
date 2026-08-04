@@ -11,14 +11,14 @@ type RevealProps = {
 }
 
 /**
- * Quiet scroll reveal — inspired by React Bits Scroll Reveal / Fade Content,
+ * Quiet scroll reveal, inspired by React Bits Scroll Reveal / Fade Content, 
  * implemented without extra deps for a lean GitHub Pages static export.
  */
 export function Reveal({
-  children,
-  className,
-  delayMs = 0,
-  as: Tag = 'div',
+  children, 
+  className, 
+  delayMs = 0, 
+  as: Tag = 'div', 
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null)
   const [visible, setVisible] = useState(false)
@@ -42,7 +42,7 @@ export function Reveal({
           setVisible(true)
           observer.disconnect()
         }
-      },
+      }, 
       { threshold: 0.14, rootMargin: '0px 0px -8% 0px' }
     )
 
@@ -54,8 +54,8 @@ export function Reveal({
     <Tag
       ref={ref as never}
       className={cn(
-        'reveal-base',
-        visible && 'reveal-visible',
+        'reveal-base', 
+        visible && 'reveal-visible', 
         className
       )}
       style={{ transitionDelay: visible ? `${delayMs}ms` : undefined }}

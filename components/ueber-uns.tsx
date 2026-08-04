@@ -69,8 +69,8 @@ export function UeberUns() {
             <div className="space-y-5 text-base leading-relaxed text-ink-muted text-pretty max-w-prose">
               <p>
                 {t(
-                  'JONOVA Immobilienverwaltung betreut Mietliegenschaften in der Schweiz mit Fokus auf persönliche Erreichbarkeit und nachvollziehbare Abläufe — ohne unnötige Bürokratie.',
-                  'JONOVA Immobilienverwaltung manages rental properties in Switzerland with a focus on personal reachability and clear processes — without unnecessary bureaucracy.'
+                  'JONOVA Immobilienverwaltung betreut Mietliegenschaften in der Schweiz mit Fokus auf persönliche Erreichbarkeit und nachvollziehbare Abläufe, ohne unnötige Bürokratie.',
+                  'JONOVA Immobilienverwaltung manages rental properties in Switzerland with a focus on personal reachability and clear processes, without unnecessary bureaucracy.'
                 )}
               </p>
               <p>
@@ -81,8 +81,8 @@ export function UeberUns() {
               </p>
               <p className="text-foreground font-medium">
                 {t(
-                  'Sie sprechen mit Menschen, die Verantwortung übernehmen — nicht mit einer Warteschleife.',
-                  'You speak with people who take responsibility — not a hold queue.'
+                  'Sie sprechen mit Menschen, die Verantwortung übernehmen, nicht mit einer Warteschleife.',
+                  'You speak with people who take responsibility, not a hold queue.'
                 )}
               </p>
             </div>
