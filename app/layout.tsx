@@ -1,6 +1,16 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Instrument_Sans, Playfair_Display } from 'next/font/google'
+import { JonovaJsonLd } from '@/components/json-ld'
+import {
+  BRAND_COLOR,
+  SITE_DESCRIPTION_DE,
+  SITE_DESCRIPTION_EN,
+  SITE_KEYWORDS,
+  SITE_NAME,
+  SITE_NAME_SHORT,
+  SITE_URL,
+} from '@/lib/site'
 import './globals.css'
 
 const instrumentSans = Instrument_Sans({
@@ -16,22 +26,108 @@ const playfairDisplay = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'JONOVA Immobilienverwaltung',
-  description:
-    'Professionelle Verwaltung von Mietliegenschaften in der Schweiz. Persönlich. Professionell. Zuverlässig.',
-  generator: 'v0.app',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} | Mietliegenschaften Schweiz`,
+    template: `%s | ${SITE_NAME_SHORT}`,
+  },
+  description: SITE_DESCRIPTION_DE,
+  keywords: SITE_KEYWORDS,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  generator: 'Next.js',
+  applicationName: SITE_NAME_SHORT,
+  referrer: 'strict-origin-when-cross-origin',
+  category: 'Business',
+  classification: 'Property Management',
+  openGraph: {
+    title: `${SITE_NAME} — Ihre Immobilie. Unsere Verantwortung.`,
+    description: SITE_DESCRIPTION_DE,
+    type: 'website',
+    url: SITE_URL,
+    locale: 'de_CH',
+    alternateLocale: ['en_US'],
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} — Professionelle Verwaltung von Mietliegenschaften`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${SITE_NAME} — Mietliegenschaften Schweiz`,
+    description: SITE_DESCRIPTION_EN,
+    images: ['/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/apple-touch-icon.png',
+    shortcut: '/favicon.ico',
+  },
+  manifest: '/manifest.json',
+  alternates: {
+    canonical: '/',
+    // Client-side DE|EN toggle shares one URL — honest hreflang until locale routes exist
+    languages: {
+      'de-CH': '/',
+      en: '/',
+      'x-default': '/',
+    },
+  },
 }
 
 export const viewport: Viewport = {
   colorScheme: 'light',
-  themeColor: '#2E5946',
+  themeColor: BRAND_COLOR,
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="de-CH" className="bg-background">
+    <html lang="de-CH" className="bg-background scroll-smooth">
+      <head>
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+        {/* Geographic — country-level until client provides exact NAP / coords */}
+        <meta name="geo.region" content="CH" />
+        <meta name="geo.placename" content="Schweiz" />
+
+        {/* Mobile */}
+        <meta name="MobileOptimized" content="width" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content={SITE_NAME_SHORT} />
+        <meta name="format-detection" content="telephone=yes" />
+        <meta name="msapplication-TileColor" content={BRAND_COLOR} />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        <JonovaJsonLd />
+      </head>
       <body
         className={`${instrumentSans.variable} ${playfairDisplay.variable} antialiased font-sans`}
       >

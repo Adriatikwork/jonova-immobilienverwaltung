@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Update Sitemap URL when custom domain goes live
+Sitemap: https://adriatikwork.github.io/jonova-immobilienverwaltung/sitemap.xml

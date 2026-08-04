@@ -1,0 +1,22 @@
+import type { MetadataRoute } from 'next'
+import { SITE_URL } from '@/lib/site'
+
+export const dynamic = 'force-static'
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    {
+      url: `${SITE_URL}/`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 1,
+      alternates: {
+        languages: {
+          'de-CH': `${SITE_URL}/`,
+          en: `${SITE_URL}/`,
+          'x-default': `${SITE_URL}/`,
+        },
+      },
+    },
+  ]
+}
