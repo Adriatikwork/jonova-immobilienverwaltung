@@ -28,10 +28,10 @@ export function JonovaJsonLd() {
     contactPoint.telephone = CONTACT.phoneE164
   }
 
-  // Immobilienverwaltung ≠ Makler — LocalBusiness + ProfessionalService
+  // No LocalBusiness until a real street address exists (Google ignores empty NAP)
   const organization: Record<string, unknown> = {
     '@context': 'https://schema.org',
-    '@type': ['LocalBusiness', 'ProfessionalService'],
+    '@type': ['Organization', 'ProfessionalService'],
     '@id': orgId,
     name: SITE_NAME,
     description: SITE_DESCRIPTION_DE,

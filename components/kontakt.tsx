@@ -1,16 +1,19 @@
 'use client'
 
 import { useState } from 'react'
-import { Mail, MapPin, Phone, CheckCircle2 } from 'lucide-react'
-import { CONTACT } from '@/lib/site'
+import emailjs from '@emailjs/browser'
+import { Mail, MapPin, Phone, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react'
+import { EMAILJS, isEmailJsConfigured } from '@/lib/emailjs'
+import { CONTACT, SITE_NAME } from '@/lib/site'
 import { useLang } from './language-context'
 
-type FormState = 'idle' | 'submitted'
+type SubmitStatus = 'idle' | 'success' | 'error'
 
 export function Kontakt() {
   const { t } = useLang()
   const showPhone = Boolean(CONTACT.phoneDisplay && CONTACT.phoneE164)
-  const [formState, setFormState] = useState<FormState>('idle')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('idle')
   const [fields, setFields] = useState({
     name: '',
     email: '',
@@ -25,9 +28,45 @@ export function Kontakt() {
     setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setFormState('submitted')
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      if (!isEmailJsConfigured()) {
+        throw new Error('EmailJS is not configured yet')
+      }
+
+      // Same shape as Fahrschule — swap EMAILJS IDs when JONOVA service is live
+      await emailjs.send(
+        EMAILJS.serviceId,
+        EMAILJS.templateId,
+        {
+          from_name: fields.name,
+          from_email: fields.email,
+          phone: fields.phone || '—',
+          property_type: fields.liegenschaft || '—',
+          message: fields.nachricht,
+          to_name: SITE_NAME,
+        },
+        EMAILJS.publicKey
+      )
+
+      setSubmitStatus('success')
+      setFields({
+        name: '',
+        email: '',
+        phone: '',
+        liegenschaft: '',
+        nachricht: '',
+      })
+    } catch (error) {
+      console.error('Email send failed:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -81,6 +120,12 @@ export function Kontakt() {
                   >
                     {CONTACT.email}
                   </a>
+                  <p className="text-xs text-ink-muted mt-1">
+                    {t(
+                      'oder nutzen Sie das Formular auf der Seite',
+                      'or use the form on this page'
+                    )}
+                  </p>
                 </div>
               </li>
               <li className="flex items-center gap-4">
@@ -100,7 +145,7 @@ export function Kontakt() {
           </div>
 
           <div className="bg-surface rounded-sm p-8 md:p-10">
-            {formState === 'submitted' ? (
+            {submitStatus === 'success' ? (
               <div className="flex flex-col items-center justify-center h-full text-center gap-4 py-12">
                 <CheckCircle2 size={40} strokeWidth={1.2} className="text-primary" />
                 <h3 className="font-serif text-2xl text-foreground">
@@ -108,15 +153,21 @@ export function Kontakt() {
                 </h3>
                 <p className="text-sm leading-relaxed text-ink-muted max-w-sm text-pretty">
                   {t(
-                    'Dies ist ein Prototyp-Formular — es werden keine Daten übermittelt.',
-                    'This is a prototype form — no data is transmitted.'
+                    'Wir haben Ihre Nachricht erhalten und melden uns so bald wie möglich bei Ihnen.',
+                    'We have received your message and will get back to you as soon as possible.'
                   )}
                 </p>
+                <button
+                  type="button"
+                  onClick={() => setSubmitStatus('idle')}
+                  className="text-sm text-primary underline underline-offset-2"
+                >
+                  {t('Weitere Nachricht senden', 'Send another message')}
+                </button>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
-                noValidate
                 className="space-y-5"
                 aria-label={t('Kontaktformular', 'Contact form')}
               >
@@ -211,19 +262,28 @@ export function Kontakt() {
                   />
                 </div>
 
+                {submitStatus === 'error' && (
+                  <div className="flex items-start gap-2 text-sm text-red-700 bg-red-50 border border-red-100 rounded-sm px-3 py-2.5">
+                    <AlertCircle size={16} className="mt-0.5 flex-shrink-0" />
+                    <p>
+                      {t(
+                        'Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns per E-Mail.',
+                        'Message could not be sent. Please try again or email us directly.'
+                      )}
+                    </p>
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full py-3.5 bg-primary text-primary-foreground text-sm font-medium rounded-sm hover:bg-primary/90 active:scale-[0.99] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  disabled={isSubmitting}
+                  className="w-full py-3.5 bg-primary text-primary-foreground text-sm font-medium rounded-sm hover:bg-primary/90 active:scale-[0.99] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-60 disabled:pointer-events-none inline-flex items-center justify-center gap-2"
                 >
-                  {t('Jetzt Kontakt aufnehmen', 'Contact us now')}
+                  {isSubmitting && <Loader2 size={16} className="animate-spin" />}
+                  {isSubmitting
+                    ? t('Wird gesendet…', 'Sending…')
+                    : t('Jetzt Kontakt aufnehmen', 'Contact us now')}
                 </button>
-
-                <p className="text-xs text-ink-muted text-center text-pretty">
-                  {t(
-                    'Prototyp — es werden keine Daten übermittelt.',
-                    'Prototype — no data is transmitted.'
-                  )}
-                </p>
               </form>
             )}
           </div>

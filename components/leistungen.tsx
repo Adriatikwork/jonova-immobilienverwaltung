@@ -96,43 +96,53 @@ function ServicePanel({
   const title = lang === 'de' ? service.titleDe : service.titleEn
   const summary = lang === 'de' ? service.summaryDe : service.summaryEn
   const items = lang === 'de' ? service.itemsDe : service.itemsEn
+  const expandable = Boolean(items && items.length > 0)
+
+  const body = (
+    <>
+      <span className="flex-shrink-0 flex flex-col items-center gap-1 mt-0.5" aria-hidden="true">
+        <span className="text-[10px] font-mono text-ink-muted tracking-widest">
+          0{index + 1}
+        </span>
+        <span className="w-9 h-9 flex items-center justify-center rounded-sm bg-surface text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-200">
+          <Icon size={18} strokeWidth={1.5} />
+        </span>
+      </span>
+
+      <span className="flex-1 min-w-0">
+        <span className="block font-serif text-xl md:text-2xl text-foreground mb-1 text-balance">
+          {title}
+        </span>
+        <span className="block text-sm leading-relaxed text-ink-muted text-pretty">
+          {summary}
+        </span>
+      </span>
+    </>
+  )
 
   return (
     <div className="border-b border-rule last:border-b-0">
-      <button
-        type="button"
-        className="group w-full flex items-start gap-5 py-7 text-left focus-visible:outline-none focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-ring"
-        aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
-      >
-        <span className="flex-shrink-0 flex flex-col items-center gap-1 mt-0.5" aria-hidden="true">
-          <span className="text-[10px] font-mono text-ink-muted tracking-widest">
-            0{index + 1}
-          </span>
-          <span className="w-9 h-9 flex items-center justify-center rounded-sm bg-surface text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-200">
-            <Icon size={18} strokeWidth={1.5} />
-          </span>
-        </span>
+      {expandable ? (
+        <button
+          type="button"
+          className="group w-full flex items-start gap-5 py-7 text-left focus-visible:outline-none focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-ring"
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+        >
+          {body}
+          <ChevronDown
+            size={18}
+            className={`flex-shrink-0 mt-1.5 text-ink-muted transition-transform duration-300 ${
+              open ? 'rotate-180' : ''
+            }`}
+            aria-hidden="true"
+          />
+        </button>
+      ) : (
+        <div className="group flex items-start gap-5 py-7">{body}</div>
+      )}
 
-        <span className="flex-1 min-w-0">
-          <span className="block font-serif text-xl md:text-2xl text-foreground mb-1 text-balance">
-            {title}
-          </span>
-          <span className="block text-sm leading-relaxed text-ink-muted text-pretty">
-            {summary}
-          </span>
-        </span>
-
-        <ChevronDown
-          size={18}
-          className={`flex-shrink-0 mt-1.5 text-ink-muted transition-transform duration-300 ${
-            open ? 'rotate-180' : ''
-          }`}
-          aria-hidden="true"
-        />
-      </button>
-
-      {open && items && (
+      {expandable && open && items && (
         <ul className="pb-7 pl-14 md:pl-[68px] grid sm:grid-cols-2 gap-y-2 gap-x-8" role="list">
           {items.map((item) => (
             <li key={item} className="flex items-start gap-2.5 text-sm text-ink-muted">

@@ -110,8 +110,6 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content={SITE_NAME_SHORT} />
         <meta name="format-detection" content="telephone=yes" />
         <meta name="msapplication-TileColor" content={BRAND_COLOR} />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <JonovaJsonLd />
       </head>
       <body

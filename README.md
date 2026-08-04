@@ -9,6 +9,20 @@ pnpm install
 pnpm dev
 ```
 
+## Contact form (EmailJS — same as Fahrschule)
+
+The form uses `@emailjs/browser`. Set your JONOVA EmailJS IDs in `.env.local` (or edit `lib/emailjs.ts`):
+
+```bash
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=service_xxx
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=template_xxx
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=xxxxx
+```
+
+Suggested template fields: `from_name`, `from_email`, `phone`, `property_type`, `message`, `to_name`.
+
+Until those are set, submit shows an error (does not fake success).
+
 ## Production build (static export)
 
 ```bash
