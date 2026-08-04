@@ -69,7 +69,7 @@ export function Footer() {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-200 focus-visible:outline-none focus-visible:text-primary-foreground"
+                  className="text-sm font-medium text-primary-foreground underline underline-offset-4 decoration-primary-foreground/35 hover:decoration-primary-foreground hover:text-primary-foreground transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/40 rounded-sm"
                 >
                   {lang === 'de' ? l.de : l.en}
                 </Link>
@@ -78,14 +78,28 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-primary-foreground/10 flex flex-col sm:flex-row justify-between gap-3">
+        <div className="mt-12 pt-6 border-t border-primary-foreground/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <p className="text-xs text-primary-foreground/40">
             &copy; {year} JONOVA Immobilienverwaltung.{' '}
             {t('Alle Rechte vorbehalten.', 'All rights reserved.')}
           </p>
-          <p className="text-xs text-primary-foreground/40">
-            {t('Schweiz', 'Switzerland')}
-          </p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
+            {legalLinks.map((l) => (
+              <Link
+                key={`bottom-${l.href}`}
+                href={l.href}
+                className="font-medium text-primary-foreground/80 underline underline-offset-4 decoration-primary-foreground/40 hover:text-primary-foreground hover:decoration-primary-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/40 rounded-sm"
+              >
+                {lang === 'de' ? l.de : l.en}
+              </Link>
+            ))}
+            <span className="text-primary-foreground/35" aria-hidden="true">
+              ·
+            </span>
+            <span className="text-primary-foreground/40">
+              {t('Schweiz', 'Switzerland')}
+            </span>
+          </div>
         </div>
       </div>
     </footer>

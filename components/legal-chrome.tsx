@@ -51,7 +51,7 @@ function LegalChromeInner({
               }`}
               aria-current={current === 'impressum' ? 'page' : undefined}
             >
-              Impressum
+              {t('Impressum', 'Imprint')}
             </Link>
             <Link
               href="/datenschutz/"
@@ -132,7 +132,7 @@ function LegalChromeInner({
           </p>
           <div className="flex gap-5 text-xs">
             <Link href="/impressum/" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
-              Impressum
+              {t('Impressum', 'Imprint')}
             </Link>
             <Link href="/datenschutz/" className="text-primary-foreground/60 hover:text-primary-foreground transition-colors">
               {t('Datenschutz', 'Privacy')}
