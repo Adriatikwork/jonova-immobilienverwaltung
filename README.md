@@ -39,11 +39,12 @@ pnpm docker:stop
 Already wired (Fahrschule-level, without a registered domain yet):
 
 - Full metadata (title template, description, keywords, OG, Twitter, robots)
-- JSON-LD: RealEstateAgent, Organization, WebSite, 4× Service, FAQ, Breadcrumb, SiteNavigation
+- JSON-LD: LocalBusiness + ProfessionalService, WebSite, 4× Service (no FAQ/hreflang until real)
 - `sitemap.ts` + `robots.txt` + `manifest.json`
 - `og-image.jpg` (1200×630), apple-touch icon, favicon
-- Canonical + language hints (`de-CH` / `en` share one URL via client toggle)
+- Canonical only (DE|EN is a client toggle on one URL — no fake hreflang)
 - Country-level geo (`CH`) until client provides exact address / coordinates
+- Phone hidden until set in `lib/site.ts` (`CONTACT.phoneE164`)
 - 404 is `noindex`
 
 **When the domain is ready**, edit:

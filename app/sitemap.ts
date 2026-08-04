@@ -7,16 +7,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: `${SITE_URL}/`,
-      lastModified: new Date(),
+      lastModified: new Date('2026-08-04'),
       changeFrequency: 'weekly',
       priority: 1,
-      alternates: {
-        languages: {
-          'de-CH': `${SITE_URL}/`,
-          en: `${SITE_URL}/`,
-          'x-default': `${SITE_URL}/`,
-        },
-      },
     },
   ]
 }

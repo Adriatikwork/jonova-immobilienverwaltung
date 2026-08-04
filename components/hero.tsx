@@ -15,13 +15,9 @@ export function Hero() {
     >
       <div className="flex flex-col lg:flex-row flex-1 pt-16">
         <div className="flex flex-col justify-center px-6 md:px-12 lg:px-16 xl:px-24 py-20 lg:py-0 lg:w-[52%] xl:w-[48%] z-10">
-          <p className="animate-fade-up text-xs font-medium tracking-[0.18em] uppercase text-primary mb-6">
-            {t('Immobilienverwaltung Schweiz', 'Property Management Switzerland')}
-          </p>
-
           <h1
             id="hero-heading"
-            className="animate-fade-up animation-delay-100 font-serif text-5xl md:text-6xl xl:text-7xl leading-[1.08] tracking-tight text-balance text-foreground mb-5"
+            className="animate-fade-up font-serif text-5xl md:text-6xl xl:text-7xl leading-[1.08] tracking-tight text-balance text-foreground mb-5"
           >
             {t('Ihre Immobilie.', 'Your property.')}{' '}
             <span className="text-primary italic">

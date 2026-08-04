@@ -1,13 +1,15 @@
 'use client'
 
 import { useState } from 'react'
-import { Phone, Mail, MapPin, CheckCircle2 } from 'lucide-react'
+import { Mail, MapPin, Phone, CheckCircle2 } from 'lucide-react'
+import { CONTACT } from '@/lib/site'
 import { useLang } from './language-context'
 
 type FormState = 'idle' | 'submitted'
 
 export function Kontakt() {
   const { t } = useLang()
+  const showPhone = Boolean(CONTACT.phoneDisplay && CONTACT.phoneE164)
   const [formState, setFormState] = useState<FormState>('idle')
   const [fields, setFields] = useState({
     name: '',
@@ -33,9 +35,6 @@ export function Kontakt() {
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <div className="grid lg:grid-cols-[1fr_1.4fr] gap-14 lg:gap-20">
           <div className="flex flex-col">
-            <p className="text-xs font-medium tracking-[0.18em] uppercase text-primary mb-3">
-              {t('Kontakt', 'Contact')}
-            </p>
             <h2
               id="kontakt-heading"
               className="font-serif text-4xl md:text-5xl text-foreground leading-tight text-balance mb-5"
@@ -50,17 +49,24 @@ export function Kontakt() {
             </p>
 
             <ul className="space-y-5" role="list">
-              <li className="flex items-center gap-4">
-                <span className="w-10 h-10 flex items-center justify-center rounded-sm bg-surface text-primary flex-shrink-0">
-                  <Phone size={18} strokeWidth={1.5} />
-                </span>
-                <div>
-                  <p className="text-xs text-ink-muted uppercase tracking-widest mb-0.5">
-                    {t('Telefon', 'Phone')}
-                  </p>
-                  <p className="text-sm font-medium text-foreground">+41 xx xxx xx xx</p>
-                </div>
-              </li>
+              {showPhone && (
+                <li className="flex items-center gap-4">
+                  <span className="w-10 h-10 flex items-center justify-center rounded-sm bg-surface text-primary flex-shrink-0">
+                    <Phone size={18} strokeWidth={1.5} />
+                  </span>
+                  <div>
+                    <p className="text-xs text-ink-muted uppercase tracking-widest mb-0.5">
+                      {t('Telefon', 'Phone')}
+                    </p>
+                    <a
+                      href={`tel:${CONTACT.phoneE164}`}
+                      className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                    >
+                      {CONTACT.phoneDisplay}
+                    </a>
+                  </div>
+                </li>
+              )}
               <li className="flex items-center gap-4">
                 <span className="w-10 h-10 flex items-center justify-center rounded-sm bg-surface text-primary flex-shrink-0">
                   <Mail size={18} strokeWidth={1.5} />
@@ -69,7 +75,12 @@ export function Kontakt() {
                   <p className="text-xs text-ink-muted uppercase tracking-widest mb-0.5">
                     E-Mail
                   </p>
-                  <p className="text-sm font-medium text-foreground">info@jonova-immo.ch</p>
+                  <a
+                    href={`mailto:${CONTACT.email}`}
+                    className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                  >
+                    {CONTACT.email}
+                  </a>
                 </div>
               </li>
               <li className="flex items-center gap-4">
@@ -81,7 +92,7 @@ export function Kontakt() {
                     {t('Standort', 'Location')}
                   </p>
                   <p className="text-sm font-medium text-foreground">
-                    {t('Schweiz', 'Switzerland')}
+                    {t(CONTACT.areaServedDe, CONTACT.areaServedEn)}
                   </p>
                 </div>
               </li>
@@ -157,7 +168,7 @@ export function Kontakt() {
                       value={fields.phone}
                       onChange={handleChange}
                       className="w-full bg-background border border-rule rounded-sm px-4 py-2.5 text-sm text-foreground placeholder:text-ink-muted/50 focus:outline-none focus:ring-2 focus:ring-ring transition"
-                      placeholder="+41 xx xxx xx xx"
+                      placeholder="+41 …"
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">

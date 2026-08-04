@@ -11,6 +11,8 @@
  * Engineering additions:
  * - DE | EN language toggle (German = client source of truth)
  * - Static export + GitHub Pages basePath-safe asset paths
+ * - SEO cleaned: no FAQ schema without FAQ UI, no same-URL hreflang,
+ *   LocalBusiness/ProfessionalService (not RealEstateAgent)
  */
 
 import { LanguageProvider } from '@/components/language-context'

@@ -155,24 +155,13 @@ export function Leistungen() {
   return (
     <section id="leistungen" className="py-24 md:py-32" aria-labelledby="leistungen-heading">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-          <div>
-            <p className="text-xs font-medium tracking-[0.18em] uppercase text-primary mb-3">
-              {t('Was wir tun', 'What we do')}
-            </p>
-            <h2
-              id="leistungen-heading"
-              className="font-serif text-4xl md:text-5xl text-foreground text-balance leading-tight"
-            >
-              {t('Unsere Leistungen', 'Our services')}
-            </h2>
-          </div>
-          <p className="max-w-sm text-sm leading-relaxed text-ink-muted md:text-right text-pretty">
-            {t(
-              'Von der laufenden Betreuung bis zur Neuvermietung — wir übernehmen die Aufgaben, die Eigentümer entlasten.',
-              'From day-to-day operations to new lettings — we take on the tasks that free property owners from the burden.'
-            )}
-          </p>
+        <div className="mb-14 max-w-2xl">
+          <h2
+            id="leistungen-heading"
+            className="font-serif text-4xl md:text-5xl text-foreground text-balance leading-tight"
+          >
+            {t('Unsere Leistungen', 'Our services')}
+          </h2>
         </div>
 
         <div className="border-t border-rule" role="list">

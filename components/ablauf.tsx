@@ -25,9 +25,9 @@ const steps = [
     titleDe: 'Laufende Betreuung',
     titleEn: 'Ongoing support',
     bodyDe:
-      'Wir stehen Ihnen als zuverlässiger Ansprechpartner zur Seite und kümmern uns um die professionelle Verwaltung Ihrer Immobilie.',
+      'Wir bleiben Ihr Ansprechpartner und führen die vereinbarte Verwaltung im Alltag.',
     bodyEn:
-      'We remain your reliable contact and take care of the professional management of your property.',
+      'We remain your contact and carry out the agreed management in day-to-day operations.',
   },
 ]
 
@@ -37,16 +37,19 @@ export function Ablauf() {
   return (
     <section id="ablauf" className="bg-surface py-24 md:py-32" aria-labelledby="ablauf-heading">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <div className="mb-16 max-w-xl">
-          <p className="text-xs font-medium tracking-[0.18em] uppercase text-primary mb-3">
-            {t('So funktioniert es', 'How it works')}
-          </p>
+        <div className="mb-14 max-w-xl">
           <h2
             id="ablauf-heading"
             className="font-serif text-4xl md:text-5xl text-foreground leading-tight text-balance"
           >
             {t('Unser Ablauf', 'Our process')}
           </h2>
+          <p className="mt-4 text-base text-ink-muted leading-relaxed">
+            {t(
+              'Vier klare Schritte von der ersten Anfrage bis zur laufenden Verwaltung.',
+              'Four clear steps from the first enquiry to ongoing management.'
+            )}
+          </p>
         </div>
 
         <ol className="grid md:grid-cols-4 gap-px bg-rule" role="list">
@@ -66,26 +69,9 @@ export function Ablauf() {
                   {lang === 'de' ? step.bodyDe : step.bodyEn}
                 </p>
               </div>
-              {i < steps.length - 1 && (
-                <span
-                  className="hidden md:block absolute top-1/2 -right-3 -translate-y-1/2 text-rule text-lg z-10 select-none"
-                  aria-hidden="true"
-                >
-                  →
-                </span>
-              )}
             </li>
           ))}
         </ol>
-
-        <div className="mt-12 text-center">
-          <a
-            href="#kontakt"
-            className="inline-flex items-center justify-center px-7 py-3.5 bg-primary text-primary-foreground text-sm font-medium rounded-sm hover:bg-primary/90 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            {t('Unverbindliche Anfrage', 'Free enquiry')}
-          </a>
-        </div>
       </div>
     </section>
   )

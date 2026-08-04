@@ -41,34 +41,27 @@ export function WarumJonova() {
   const { lang, t } = useLang()
 
   return (
-    <section className="bg-surface py-24 md:py-32" aria-labelledby="warum-heading">
+    <section
+      id="warum"
+      className="bg-surface py-24 md:py-32"
+      aria-labelledby="warum-heading"
+    >
       <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <div className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <div className="max-w-lg">
-            <p className="text-xs font-medium tracking-[0.18em] uppercase text-primary mb-3">
-              {t('Ihr Vorteil', 'Your advantage')}
-            </p>
-            <h2
-              id="warum-heading"
-              className="font-serif text-4xl md:text-5xl text-foreground leading-tight text-balance"
-            >
-              {t('Warum JONOVA?', 'Why JONOVA?')}
-            </h2>
-          </div>
-          <p className="text-base text-ink-muted leading-relaxed max-w-xs md:text-right text-pretty">
-            {t(
-              'Persönliche Verwaltung, die Eigentümer entlastet — zuverlässig und ohne Überraschungen.',
-              'Personal property management that relieves owners — reliably and without surprises.'
-            )}
-          </p>
+        <div className="mb-14 max-w-2xl">
+          <h2
+            id="warum-heading"
+            className="font-serif text-4xl md:text-5xl text-foreground leading-tight text-balance"
+          >
+            {t('Warum JONOVA?', 'Why JONOVA?')}
+          </h2>
         </div>
 
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-start">
+        <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-16 items-stretch">
           <div className="flex flex-col divide-y divide-rule">
             {advantages.map((a) => (
               <article
                 key={a.number}
-                className="group py-8 first:pt-0 last:pb-0 grid grid-cols-[2rem_1fr] gap-6 items-start"
+                className="group py-7 first:pt-0 last:pb-0 grid grid-cols-[2rem_1fr] gap-6 items-start"
               >
                 <span className="font-mono text-xs font-medium text-ink-muted mt-1 tabular-nums">
                   {a.number}
@@ -85,34 +78,17 @@ export function WarumJonova() {
             ))}
           </div>
 
-          <div className="relative lg:sticky lg:top-28 flex flex-col gap-4">
-            <div className="relative rounded-sm overflow-hidden aspect-[4/5] w-full">
-              <Image
-                src={assetPath('/images/hero-building.png')}
-                alt={t(
-                  'Von JONOVA betreute Mietliegenschaft in der Schweiz',
-                  'Rental property managed by JONOVA in Switzerland'
-                )}
-                fill
-                sizes="(max-width: 1024px) 100vw, 44vw"
-                className="object-cover object-center"
-              />
-              <div
-                className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-foreground/60 to-transparent pointer-events-none"
-                aria-hidden="true"
-              />
-              <div className="absolute bottom-0 inset-x-0 p-6 md:p-8">
-                <p className="font-serif text-xl md:text-2xl text-white leading-snug text-balance italic">
-                  {t(
-                    '«Wir betreuen Ihre Immobilie mit Sorgfalt und Verantwortung.»',
-                    '“We manage your property with care and responsibility.”'
-                  )}
-                </p>
-                <p className="mt-2 text-xs font-medium tracking-widest uppercase text-white/70">
-                  JONOVA Immobilienverwaltung
-                </p>
-              </div>
-            </div>
+          <div className="relative min-h-[320px] lg:min-h-full rounded-sm overflow-hidden">
+            <Image
+              src={assetPath('/images/about-exterior.png')}
+              alt={t(
+                'Gepflegte Fassade einer Mietliegenschaft in der Schweiz',
+                'Well-maintained facade of a rental property in Switzerland'
+              )}
+              fill
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              className="object-cover object-center"
+            />
           </div>
         </div>
       </div>

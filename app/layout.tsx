@@ -1,11 +1,9 @@
-import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Instrument_Sans, Playfair_Display } from 'next/font/google'
 import { JonovaJsonLd } from '@/components/json-ld'
 import {
   BRAND_COLOR,
   SITE_DESCRIPTION_DE,
-  SITE_DESCRIPTION_EN,
   SITE_KEYWORDS,
   SITE_NAME,
   SITE_NAME_SHORT,
@@ -47,7 +45,6 @@ export const metadata: Metadata = {
     type: 'website',
     url: SITE_URL,
     locale: 'de_CH',
-    alternateLocale: ['en_US'],
     siteName: SITE_NAME,
     images: [
       {
@@ -61,7 +58,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: `${SITE_NAME} — Mietliegenschaften Schweiz`,
-    description: SITE_DESCRIPTION_EN,
+    description: SITE_DESCRIPTION_DE,
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -84,14 +81,9 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
   },
   manifest: '/manifest.json',
+  // No hreflang until separate locale URLs exist (client DE|EN toggle shares one URL)
   alternates: {
     canonical: '/',
-    // Client-side DE|EN toggle shares one URL — honest hreflang until locale routes exist
-    languages: {
-      'de-CH': '/',
-      en: '/',
-      'x-default': '/',
-    },
   },
 }
 
@@ -109,12 +101,8 @@ export default function RootLayout({
     <html lang="de-CH" className="bg-background scroll-smooth">
       <head>
         <meta name="referrer" content="strict-origin-when-cross-origin" />
-
-        {/* Geographic — country-level until client provides exact NAP / coords */}
         <meta name="geo.region" content="CH" />
         <meta name="geo.placename" content="Schweiz" />
-
-        {/* Mobile */}
         <meta name="MobileOptimized" content="width" />
         <meta name="HandheldFriendly" content="true" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -122,17 +110,14 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content={SITE_NAME_SHORT} />
         <meta name="format-detection" content="telephone=yes" />
         <meta name="msapplication-TileColor" content={BRAND_COLOR} />
-
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-
         <JonovaJsonLd />
       </head>
       <body
         className={`${instrumentSans.variable} ${playfairDisplay.variable} antialiased font-sans`}
       >
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )

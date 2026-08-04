@@ -15,10 +15,24 @@ function JsonLdScript({ data }: { data: Record<string, unknown> }) {
 }
 
 export function JonovaJsonLd() {
-  const localBusiness = {
+  const orgId = `${SITE_URL}/#organization`
+
+  const contactPoint: Record<string, unknown> = {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    email: CONTACT.email,
+    availableLanguage: ['German', 'English'],
+    areaServed: 'CH',
+  }
+  if (CONTACT.phoneE164) {
+    contactPoint.telephone = CONTACT.phoneE164
+  }
+
+  // Immobilienverwaltung ≠ Makler — LocalBusiness + ProfessionalService
+  const organization: Record<string, unknown> = {
     '@context': 'https://schema.org',
-    '@type': 'RealEstateAgent',
-    '@id': `${SITE_URL}/#organization`,
+    '@type': ['LocalBusiness', 'ProfessionalService'],
+    '@id': orgId,
     name: SITE_NAME,
     description: SITE_DESCRIPTION_DE,
     url: `${SITE_URL}/`,
@@ -34,28 +48,11 @@ export function JonovaJsonLd() {
       addressCountry: CONTACT.country,
     },
     currenciesAccepted: 'CHF',
-    priceRange: '$$',
     knowsLanguage: ['de-CH', 'de', 'en'],
-    sameAs: [] as string[],
+    contactPoint: [contactPoint],
   }
-
-  const organization = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    '@id': `${SITE_URL}/#org`,
-    name: SITE_NAME,
-    url: `${SITE_URL}/`,
-    logo: `${SITE_URL}/icon.svg`,
-    email: CONTACT.email,
-    contactPoint: [
-      {
-        '@type': 'ContactPoint',
-        contactType: 'customer service',
-        email: CONTACT.email,
-        availableLanguage: ['German', 'English'],
-        areaServed: 'CH',
-      },
-    ],
+  if (CONTACT.phoneE164) {
+    organization.telephone = CONTACT.phoneE164
   }
 
   const webSite = {
@@ -66,7 +63,7 @@ export function JonovaJsonLd() {
     url: `${SITE_URL}/`,
     description: SITE_DESCRIPTION_DE,
     inLanguage: ['de-CH', 'en'],
-    publisher: { '@id': `${SITE_URL}/#organization` },
+    publisher: { '@id': orgId },
   }
 
   const services = [
@@ -95,87 +92,18 @@ export function JonovaJsonLd() {
     '@type': 'Service',
     name: service.name,
     description: service.description,
-    provider: { '@id': `${SITE_URL}/#organization` },
+    provider: { '@id': orgId },
     areaServed: { '@type': 'Country', name: 'Switzerland' },
     serviceType: 'Property management',
   }))
 
-  const breadcrumb = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Startseite',
-        item: `${SITE_URL}/`,
-      },
-    ],
-  }
-
-  const navigation = {
-    '@context': 'https://schema.org',
-    '@type': 'SiteNavigationElement',
-    name: 'Main',
-    hasPart: [
-      { '@type': 'WebPage', name: 'Startseite', url: `${SITE_URL}/#startseite` },
-      { '@type': 'WebPage', name: 'Leistungen', url: `${SITE_URL}/#leistungen` },
-      { '@type': 'WebPage', name: 'Über uns', url: `${SITE_URL}/#ueber-uns` },
-      { '@type': 'WebPage', name: 'Ablauf', url: `${SITE_URL}/#ablauf` },
-      { '@type': 'WebPage', name: 'Kontakt', url: `${SITE_URL}/#kontakt` },
-    ],
-  }
-
-  const faq = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'Welche Leistungen bietet JONOVA an?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'JONOVA übernimmt die Verwaltung von Mietliegenschaften, kaufmännische Verwaltung, technische Betreuung und Vermietung in der Schweiz.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Wie läuft die Zusammenarbeit ab?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Nach dem Erstgespräch erhalten Sie eine individuelle Offerte. Nach der Beauftragung übernehmen wir die vereinbarten Verwaltungsaufgaben und betreuen Sie laufend.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Verwaltet JONOVA einzelne Liegenschaften und Portfolios?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Ja. Ob einzelne Liegenschaft oder grösseres Portfolio – JONOVA berät persönlich und entwickelt eine passende Verwaltungslösung.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Warum JONOVA wählen?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Persönliche Betreuung, transparente Kommunikation, effiziente digitale Prozesse und nachhaltiger Werterhalt Ihrer Immobilie.',
-        },
-      },
-    ],
-  }
-
   return (
     <>
-      <JsonLdScript data={localBusiness} />
       <JsonLdScript data={organization} />
       <JsonLdScript data={webSite} />
       {services.map((service) => (
         <JsonLdScript key={service.name as string} data={service} />
       ))}
-      <JsonLdScript data={breadcrumb} />
-      <JsonLdScript data={navigation} />
-      <JsonLdScript data={faq} />
     </>
   )
 }

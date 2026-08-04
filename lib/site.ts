@@ -1,6 +1,6 @@
 /**
- * Central site config for SEO / JSON-LD / sitemap.
- * When a custom domain is ready, change SITE_URL only (and drop basePath in next.config).
+ * Central site config for SEO / JSON-LD / sitemap / UI contact.
+ * When a custom domain is ready, change SITE_URL (and drop basePath in next.config).
  */
 export const SITE_NAME = 'JONOVA Immobilienverwaltung'
 export const SITE_NAME_SHORT = 'JONOVA'
@@ -11,10 +11,10 @@ export const SITE_URL =
   'https://adriatikwork.github.io/jonova-immobilienverwaltung'
 
 export const SITE_DESCRIPTION_DE =
-  'JONOVA Immobilienverwaltung – professionelle Verwaltung von Mietliegenschaften in der Schweiz. Persönlich. Professionell. Zuverlässig.'
+  'JONOVA Immobilienverwaltung betreut Mietliegenschaften in der Schweiz — kaufmännisch, technisch und bei der Vermietung. Persönlich. Professionell. Zuverlässig.'
 
 export const SITE_DESCRIPTION_EN =
-  'JONOVA Immobilienverwaltung – professional management of rental properties in Switzerland. Personal. Professional. Reliable.'
+  'JONOVA Immobilienverwaltung manages rental properties in Switzerland — commercially, technically, and for letting. Personal. Professional. Reliable.'
 
 export const SITE_KEYWORDS = [
   'Immobilienverwaltung Schweiz',
@@ -29,11 +29,16 @@ export const SITE_KEYWORDS = [
 
 export const BRAND_COLOR = '#2E5946'
 
-/** Placeholder contact — replace when client provides final details */
+/**
+ * Contact details — single source of truth for UI + JSON-LD.
+ * Leave phoneE164 empty until the client provides a real number (hides phone in UI/schema).
+ */
 export const CONTACT = {
   email: 'info@jonova-immo.ch',
-  phoneDisplay: '+41 xx xxx xx xx',
-  phoneE164: '', // set when known, e.g. +41441234567
-  areaServed: 'Switzerland',
+  /** Shown only when non-empty */
+  phoneDisplay: '',
+  phoneE164: '',
+  areaServedDe: 'Schweiz',
+  areaServedEn: 'Switzerland',
   country: 'CH',
 } as const
