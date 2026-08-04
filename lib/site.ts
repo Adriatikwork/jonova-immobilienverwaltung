@@ -42,3 +42,18 @@ export const CONTACT = {
   areaServedEn: 'Switzerland',
   country: 'CH',
 } as const
+
+/**
+ * Swiss Impressum fields — fill when the client provides registration details.
+ * Empty strings are omitted from UI/schema (honest gap, not invented NAP).
+ */
+export const LEGAL = {
+  /** e.g. Einzelfirma / GmbH */
+  legalForm: '',
+  responsibleName: '',
+  street: '',
+  postalCode: '',
+  city: '',
+  /** CHE-xxx.xxx.xxx MwSt-Nr. if applicable */
+  uid: '',
+} as const

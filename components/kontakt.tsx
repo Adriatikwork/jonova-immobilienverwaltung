@@ -169,8 +169,8 @@ export function Kontakt() {
                   </p>
                   <p className="text-xs text-ink-muted mt-1">
                     {t(
-                      'Region folgt — wir beraten Sie bereits jetzt persönlich.',
-                      'Region to follow — we already advise you personally.'
+                      'Persönliche Beratung für Eigentümer in der Schweiz.',
+                      'Personal advice for property owners in Switzerland.'
                     )}
                   </p>
                 </div>

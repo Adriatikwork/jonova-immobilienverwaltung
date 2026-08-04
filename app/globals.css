@@ -113,6 +113,10 @@
   html {
     scroll-behavior: smooth;
   }
+  /* Fixed header offset for in-page anchors */
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }

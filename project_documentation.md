@@ -1,6 +1,22 @@
 # JONOVA Immobilienverwaltung — Project Documentation
 
-## Feature: Trust-first landing redesign (2026)
+## Feature: Legal pages + SEO hardening
+
+### Description
+Added Swiss Impressum and Datenschutz pages (structure aligned with Fahrschule 06 pattern on adriatik-isufi.github.io, styled in JONOVA design). FAQ content centralized for UI + FAQPage schema. Sitemap extended. Footer legal links wired. Scroll-margin for fixed nav anchors.
+
+### Location
+- `app/impressum/` — Impressum
+- `app/datenschutz/` — Datenschutzerklärung (nDSG + EmailJS/GitHub Pages disclosure)
+- `components/legal-chrome.tsx` — shared legal nav/footer
+- `lib/faq-content.ts` — shared FAQ
+- `lib/site.ts` — `LEGAL` fields for future NAP / UID
+- `components/json-ld.tsx` — Organization, WebSite, WebPage, FAQPage, Services
+- `app/sitemap.ts` — home + legal URLs
+
+### Configuration
+Fill `LEGAL.*` and `CONTACT.phone*` in `lib/site.ts` when the client provides registration details.
+
 
 ### Description
 Repositioned the marketing site from generic Verwaltung adjectives to an owner-trust narrative focused on reachability, clear processes, and personal enquiry conversion. Inspired by Swiss competitor patterns (Resonus, KAMA), property-management website research (owner vs tenant paths, trust signals), and common Eigentümer complaints (Erreichbarkeit, Abrechnungen, Wechsel).

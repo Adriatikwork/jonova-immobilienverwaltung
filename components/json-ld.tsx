@@ -4,6 +4,7 @@ import {
   SITE_NAME,
   SITE_URL,
 } from '@/lib/site'
+import { FAQ_ITEMS } from '@/lib/faq-content'
 
 function JsonLdScript({ data }: { data: Record<string, unknown> }) {
   return (
@@ -28,7 +29,6 @@ export function JonovaJsonLd() {
     contactPoint.telephone = CONTACT.phoneE164
   }
 
-  // No LocalBusiness until a real street address exists (Google ignores empty NAP)
   const organization: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': ['Organization', 'ProfessionalService'],
@@ -66,6 +66,18 @@ export function JonovaJsonLd() {
     publisher: { '@id': orgId },
   }
 
+  const webPage = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${SITE_URL}/#webpage`,
+    url: `${SITE_URL}/`,
+    name: `${SITE_NAME} | Mietliegenschaften Schweiz`,
+    description: SITE_DESCRIPTION_DE,
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    about: { '@id': orgId },
+    inLanguage: 'de-CH',
+  }
+
   const services = [
     {
       name: 'Verwaltung von Mietliegenschaften',
@@ -97,10 +109,26 @@ export function JonovaJsonLd() {
     serviceType: 'Property management',
   }))
 
+  const faqPage = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': `${SITE_URL}/#faq`,
+    mainEntity: FAQ_ITEMS.map((item) => ({
+      '@type': 'Question',
+      name: item.qDe,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.aDe,
+      },
+    })),
+  }
+
   return (
     <>
       <JsonLdScript data={organization} />
       <JsonLdScript data={webSite} />
+      <JsonLdScript data={webPage} />
+      <JsonLdScript data={faqPage} />
       {services.map((service) => (
         <JsonLdScript key={service.name as string} data={service} />
       ))}

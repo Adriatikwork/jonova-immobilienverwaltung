@@ -1,11 +1,11 @@
 {
   "name": "JONOVA Immobilienverwaltung",
   "short_name": "JONOVA",
-  "description": "Professionelle Verwaltung von Mietliegenschaften in der Schweiz. Persönlich. Professionell. Zuverlässig.",
+  "description": "Persönliche Verwaltung von Mietliegenschaften in der Schweiz — erreichbar, klare Abläufe, kaufmännisch und technisch.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#F7F6F2",
+  "background_color": "#F3F5F3",
   "theme_color": "#2E5946",
   "orientation": "any",
   "dir": "ltr",

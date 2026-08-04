@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useLang } from './language-context'
 
 export function Footer() {
@@ -15,8 +16,8 @@ export function Footer() {
   ]
 
   const legalLinks = [
-    { de: 'Impressum', en: 'Imprint' },
-    { de: 'Datenschutz', en: 'Privacy' },
+    { de: 'Impressum', en: 'Imprint', href: '/impressum/' },
+    { de: 'Datenschutz', en: 'Privacy', href: '/datenschutz/' },
   ]
 
   return (
@@ -65,13 +66,13 @@ export function Footer() {
                 {t('Rechtliches', 'Legal')}
               </p>
               {legalLinks.map((l) => (
-                <span
-                  key={l.de}
-                  className="text-sm text-primary-foreground/40 cursor-default select-none"
-                  title={t('Demnächst verfügbar', 'Coming soon')}
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-200 focus-visible:outline-none focus-visible:text-primary-foreground"
                 >
                   {lang === 'de' ? l.de : l.en}
-                </span>
+                </Link>
               ))}
             </div>
           </nav>
