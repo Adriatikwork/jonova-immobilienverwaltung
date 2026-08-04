@@ -7,9 +7,10 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   const navLinks = [
-    { de: 'Startseite', en: 'Home', href: '#startseite' },
+    { de: 'Start', en: 'Home', href: '#startseite' },
+    { de: 'Eigentümer', en: 'Owners', href: '#eigentuemer' },
     { de: 'Leistungen', en: 'Services', href: '#leistungen' },
-    { de: 'Über uns', en: 'About', href: '#ueber-uns' },
+    { de: 'FAQ', en: 'FAQ', href: '#faq' },
     { de: 'Kontakt', en: 'Contact', href: '#kontakt' },
   ]
 
@@ -34,8 +35,8 @@ export function Footer() {
             </div>
             <p className="text-sm leading-relaxed text-primary-foreground/60 text-pretty">
               {t(
-                'Professionelle Verwaltung von Mietliegenschaften in der Schweiz.',
-                'Professional management of rental properties in Switzerland.'
+                'Persönliche Verwaltung von Mietliegenschaften in der Schweiz — erreichbar, klar, sorgfältig.',
+                'Personal management of rental properties in Switzerland — reachable, clear, careful.'
               )}
             </p>
           </div>

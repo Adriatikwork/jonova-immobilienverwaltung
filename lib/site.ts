@@ -11,10 +11,10 @@ export const SITE_URL =
   'https://adriatikwork.github.io/jonova-immobilienverwaltung'
 
 export const SITE_DESCRIPTION_DE =
-  'JONOVA Immobilienverwaltung betreut Mietliegenschaften in der Schweiz — kaufmännisch, technisch und bei der Vermietung. Persönlich. Professionell. Zuverlässig.'
+  'JONOVA Immobilienverwaltung: persönliche Betreuung von Mietliegenschaften in der Schweiz — erreichbar, klare Abläufe, kaufmännisch und technisch.'
 
 export const SITE_DESCRIPTION_EN =
-  'JONOVA Immobilienverwaltung manages rental properties in Switzerland — commercially, technically, and for letting. Personal. Professional. Reliable.'
+  'JONOVA Immobilienverwaltung: personal management of rental properties in Switzerland — reachable, clear processes, commercial and technical.'
 
 export const SITE_KEYWORDS = [
   'Immobilienverwaltung Schweiz',

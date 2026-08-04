@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { ChevronDown, Building2, BookOpen, Wrench, Home } from 'lucide-react'
+import { Reveal } from './reveal'
 import { useLang } from './language-context'
 
 const services = [
@@ -11,9 +12,9 @@ const services = [
     titleDe: 'Verwaltung von Mietliegenschaften',
     titleEn: 'Rental property management',
     summaryDe:
-      'Wir übernehmen die laufende Verwaltung Ihrer Liegenschaft und sorgen für eine zuverlässige Betreuung – von der Mieterkommunikation bis zur Organisation des täglichen Betriebs.',
+      'Laufende Betreuung Ihrer Liegenschaft — von der Mieterkommunikation bis zur Organisation des täglichen Betriebs, damit Sie den Überblick behalten ohne den Alltag zu führen.',
     summaryEn:
-      'We take over the ongoing management of your property and ensure reliable support — from tenant communication to organising day-to-day operations.',
+      'Ongoing care of your property — from tenant communication to organising day-to-day operations, so you keep the overview without running the daily grind.',
     itemsDe: null as string[] | null,
     itemsEn: null as string[] | null,
   },
@@ -22,8 +23,10 @@ const services = [
     icon: BookOpen,
     titleDe: 'Kaufmännische Verwaltung',
     titleEn: 'Commercial administration',
-    summaryDe: 'Strukturierte finanzielle und administrative Betreuung für volle Transparenz.',
-    summaryEn: 'Structured financial and administrative management for full clarity.',
+    summaryDe:
+      'Strukturierte finanzielle und administrative Betreuung — damit Abrechnungen und Vorgänge nachvollziehbar bleiben.',
+    summaryEn:
+      'Structured financial and administrative management — so accounts and cases stay understandable.',
     itemsDe: [
       'Verwaltung von Mietverhältnissen',
       'Korrespondenz mit Mietern',
@@ -44,8 +47,10 @@ const services = [
     icon: Wrench,
     titleDe: 'Technische Betreuung',
     titleEn: 'Technical maintenance',
-    summaryDe: 'Professionelle Koordination von Unterhalt und Instandhaltung.',
-    summaryEn: 'Professional coordination of maintenance and upkeep.',
+    summaryDe:
+      'Koordination von Unterhalt und Instandhaltung mit Handwerksbetrieben — proaktiv und dokumentiert, nicht nur im Notfall.',
+    summaryEn:
+      'Coordination of maintenance and upkeep with tradespeople — proactive and documented, not only in emergencies.',
     itemsDe: [
       'Koordination von Unterhaltsarbeiten',
       'Organisation von Reparaturen',
@@ -64,8 +69,10 @@ const services = [
     icon: Home,
     titleDe: 'Vermietung',
     titleEn: 'Letting & tenant placement',
-    summaryDe: 'Von der Vermarktung bis zur Wohnungsübergabe — wir begleiten den gesamten Prozess.',
-    summaryEn: 'From marketing to key handover — we manage the entire letting process.',
+    summaryDe:
+      'Von der Vermarktung bis zur Wohnungsübergabe — damit Leerstand kurz bleibt und der Prozess sauber dokumentiert ist.',
+    summaryEn:
+      'From marketing to key handover — so vacancy stays short and the process is cleanly documented.',
     itemsDe: [
       'Vermarktung freier Objekte',
       'Organisation von Besichtigungen',
@@ -91,7 +98,7 @@ function ServicePanel({
   index: number
 }) {
   const { lang } = useLang()
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(index === 1)
   const Icon = service.icon
   const title = lang === 'de' ? service.titleDe : service.titleEn
   const summary = lang === 'de' ? service.summaryDe : service.summaryEn
@@ -110,7 +117,7 @@ function ServicePanel({
       </span>
 
       <span className="flex-1 min-w-0">
-        <span className="block font-serif text-xl md:text-2xl text-foreground mb-1 text-balance">
+        <span className="block font-sans font-semibold text-xl md:text-2xl text-foreground mb-1 tracking-tight text-balance">
           {title}
         </span>
         <span className="block text-sm leading-relaxed text-ink-muted text-pretty">
@@ -165,20 +172,34 @@ export function Leistungen() {
   return (
     <section id="leistungen" className="py-24 md:py-32" aria-labelledby="leistungen-heading">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <div className="mb-14 max-w-2xl">
+        <Reveal className="mb-14 max-w-2xl">
+          <p className="section-eyebrow mb-4">
+            {t('Leistungen', 'Services')}
+          </p>
           <h2
             id="leistungen-heading"
-            className="font-serif text-4xl md:text-5xl text-foreground text-balance leading-tight"
+            className="font-sans font-semibold text-3xl md:text-4xl lg:text-[2.75rem] tracking-tight text-foreground text-balance leading-[1.15]"
           >
-            {t('Unsere Leistungen', 'Our services')}
+            {t(
+              'Was wir konkret für Sie übernehmen.',
+              'What we concretely take on for you.'
+            )}
           </h2>
-        </div>
+          <p className="mt-4 text-base text-ink-muted leading-relaxed">
+            {t(
+              'Kein Feature-Katalog um der Vollständigkeit willen — sondern die Aufgaben, die Eigentümer entlasten.',
+              'Not a feature catalogue for completeness — the tasks that actually relieve owners.'
+            )}
+          </p>
+        </Reveal>
 
-        <div className="border-t border-rule" role="list">
-          {services.map((service, i) => (
-            <ServicePanel key={service.id} service={service} index={i} />
-          ))}
-        </div>
+        <Reveal>
+          <div className="border-t border-rule" role="list">
+            {services.map((service, i) => (
+              <ServicePanel key={service.id} service={service} index={i} />
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   )

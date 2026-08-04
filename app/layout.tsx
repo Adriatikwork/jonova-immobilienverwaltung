@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   category: 'Business',
   classification: 'Property Management',
   openGraph: {
-    title: `${SITE_NAME} — Ihre Immobilie. Unsere Verantwortung.`,
+    title: `${SITE_NAME} — Verwaltung, die Sie nicht nachfragen müssen.`,
     description: SITE_DESCRIPTION_DE,
     type: 'website',
     url: SITE_URL,

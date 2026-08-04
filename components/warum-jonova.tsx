@@ -2,38 +2,45 @@
 
 import Image from 'next/image'
 import { assetPath } from '@/lib/asset-path'
+import { Reveal } from './reveal'
 import { useLang } from './language-context'
 
-const advantages = [
+const outcomes = [
   {
     number: '01',
-    titleDe: 'Persönliche Betreuung',
-    titleEn: 'Personal support',
-    bodyDe: 'Ein direkter Ansprechpartner begleitet Sie zuverlässig und persönlich.',
-    bodyEn: 'A dedicated contact accompanies you reliably and personally.',
+    titleDe: 'Erreichbarkeit statt Hotline',
+    titleEn: 'Reachable — not a hotline',
+    bodyDe:
+      'Ein direkter Ansprechpartner begleitet Sie — ohne anonymes Callcenter. Erreichbarkeit ist für Eigentümer der häufigste Grund zu wechseln.',
+    bodyEn:
+      'A direct contact accompanies you — no anonymous call centre. Reachability is the most common reason owners switch.',
   },
   {
     number: '02',
-    titleDe: 'Transparente Kommunikation',
-    titleEn: 'Transparent communication',
-    bodyDe: 'Klare Abläufe und offene Kommunikation schaffen Vertrauen.',
-    bodyEn: 'Clear processes and open communication build trust.',
+    titleDe: 'Abrechnungen ohne Rätselraten',
+    titleEn: 'Accounts without guesswork',
+    bodyDe:
+      'Klare Abläufe und nachvollziehbare Kommunikation zu Mieten, Kosten und Vorgängen — damit Sie nicht hinterherlaufen müssen.',
+    bodyEn:
+      'Clear processes and understandable communication on rents, costs and cases — so you do not have to chase updates.',
   },
   {
     number: '03',
-    titleDe: 'Effiziente Prozesse',
-    titleEn: 'Efficient processes',
-    bodyDe: 'Wir arbeiten strukturiert, digital und lösungsorientiert.',
-    bodyEn: 'We work in a structured, digital, and solution-oriented way.',
+    titleDe: 'Alltag aus einer Hand',
+    titleEn: 'Day-to-day from one desk',
+    bodyDe:
+      'Mieteranliegen, Handwerkerkoordination und organisatorische Verwaltung — strukturiert, digital und lösungsorientiert.',
+    bodyEn:
+      'Tenant requests, trades coordination and organisational management — structured, digital and solution-oriented.',
   },
   {
     number: '04',
-    titleDe: 'Nachhaltige Werterhaltung',
-    titleEn: 'Sustainable value preservation',
+    titleDe: 'Werterhalt im Blick',
+    titleEn: 'Value preservation in focus',
     bodyDe:
-      'Unser Ziel ist der langfristige Erhalt und die sorgfältige Betreuung Ihrer Immobilie.',
+      'Unterhalt und Vermietung mit dem Ziel, Ihre Liegenschaft langfristig sorgfältig zu betreuen — nicht nur Probleme abzuarbeiten.',
     bodyEn:
-      'Our goal is the long-term preservation and careful management of your property.',
+      'Maintenance and letting with the aim of carefully looking after your property long-term — not only fixing problems.',
   },
 ]
 
@@ -47,49 +54,69 @@ export function WarumJonova() {
       aria-labelledby="warum-heading"
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <div className="mb-14 max-w-2xl">
-          <h2
-            id="warum-heading"
-            className="font-serif text-4xl md:text-5xl text-foreground leading-tight text-balance"
-          >
-            {t('Warum JONOVA?', 'Why JONOVA?')}
-          </h2>
-        </div>
-
-        <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-16 items-stretch">
-          <div className="flex flex-col divide-y divide-rule">
-            {advantages.map((a) => (
-              <article
-                key={a.number}
-                className="group py-7 first:pt-0 last:pb-0 grid grid-cols-[2rem_1fr] gap-6 items-start"
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-start">
+          <div>
+            <Reveal className="mb-12 max-w-xl">
+              <p className="section-eyebrow mb-4">
+                {t('Warum Eigentümer wechseln', 'Why owners switch')}
+              </p>
+              <h2
+                id="warum-heading"
+                className="font-sans font-semibold text-3xl md:text-4xl lg:text-[2.75rem] tracking-tight text-foreground leading-[1.15] text-balance"
               >
-                <span className="font-mono text-xs font-medium text-ink-muted mt-1 tabular-nums">
-                  {a.number}
-                </span>
-                <div>
-                  <h3 className="font-serif text-xl text-foreground mb-2 group-hover:text-primary transition-colors duration-200">
-                    {lang === 'de' ? a.titleDe : a.titleEn}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-ink-muted text-pretty">
-                    {lang === 'de' ? a.bodyDe : a.bodyEn}
-                  </p>
-                </div>
-              </article>
-            ))}
+                {t(
+                  'Was Eigentümer wirklich erwarten.',
+                  'What owners actually expect.'
+                )}
+              </h2>
+            </Reveal>
+
+            <div className="flex flex-col divide-y divide-rule/80">
+              {outcomes.map((a, i) => (
+                <Reveal key={a.number} delayMs={i * 70}>
+                  <article className="group py-7 first:pt-0 last:pb-0 grid grid-cols-[2.5rem_1fr] gap-5 items-start">
+                    <span className="font-mono text-xs font-medium text-primary/70 mt-1.5 tabular-nums">
+                      {a.number}
+                    </span>
+                    <div>
+                      <h3 className="font-sans font-semibold text-lg md:text-xl text-foreground mb-2 tracking-tight group-hover:text-primary transition-colors duration-200">
+                        {lang === 'de' ? a.titleDe : a.titleEn}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-ink-muted text-pretty max-w-prose">
+                        {lang === 'de' ? a.bodyDe : a.bodyEn}
+                      </p>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
           </div>
 
-          <div className="relative min-h-[320px] lg:min-h-full rounded-sm overflow-hidden">
-            <Image
-              src={assetPath('/images/about-exterior.png')}
-              alt={t(
-                'Gepflegte Fassade einer Mietliegenschaft in der Schweiz',
-                'Well-maintained facade of a rental property in Switzerland'
-              )}
-              fill
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover object-center"
-            />
-          </div>
+          <Reveal delayMs={120} className="relative min-h-[360px] lg:min-h-[560px] lg:sticky lg:top-24">
+            <div className="absolute inset-0 overflow-hidden rounded-sm">
+              <Image
+                src={assetPath('/images/about-exterior.png')}
+                alt={t(
+                  'Gepflegte Fassade einer Mietliegenschaft in der Schweiz',
+                  'Well-maintained facade of a rental property in Switzerland'
+                )}
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-cover object-center"
+              />
+              <div
+                className="absolute inset-x-0 bottom-0 p-6 bg-[linear-gradient(to_top,rgba(18,28,24,0.72),transparent)]"
+                aria-hidden="true"
+              >
+                <p className="text-sm text-hero-foreground/90 leading-snug max-w-[18rem]">
+                  {t(
+                    'Persönliche Betreuung. Klare Prozesse. Schweizer Qualitätsanspruch.',
+                    'Personal support. Clear processes. Swiss standard of care.'
+                  )}
+                </p>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -1,79 +1,88 @@
 'use client'
 
 import Image from 'next/image'
+import { ArrowDown } from 'lucide-react'
 import { assetPath } from '@/lib/asset-path'
+import { useInquiry } from './inquiry-context'
 import { useLang } from './language-context'
 
 export function Hero() {
   const { t } = useLang()
+  const { startInquiry } = useInquiry()
 
   return (
     <section
       id="startseite"
-      className="relative min-h-screen flex flex-col"
+      className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden noise-overlay"
       aria-labelledby="hero-heading"
     >
-      <div className="flex flex-col lg:flex-row flex-1 pt-16">
-        <div className="flex flex-col justify-center px-6 md:px-12 lg:px-16 xl:px-24 py-20 lg:py-0 lg:w-[52%] xl:w-[48%] z-10">
-          <h1
-            id="hero-heading"
-            className="animate-fade-up font-serif text-5xl md:text-6xl xl:text-7xl leading-[1.08] tracking-tight text-balance text-foreground mb-5"
+      <div className="absolute inset-0">
+        <Image
+          src={assetPath('/images/hero-building.png')}
+          alt={t(
+            'Gepflegtes Mehrfamilienhaus in der Schweiz',
+            'Well-maintained residential apartment building in Switzerland'
+          )}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center hero-image-motion"
+        />
+        <div
+          className="absolute inset-0 bg-[linear-gradient(105deg,rgba(18,28,24,0.88)_0%,rgba(18,28,24,0.62)_42%,rgba(18,28,24,0.28)_100%)]"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(to_top,rgba(18,28,24,0.55),transparent)]"
+          aria-hidden="true"
+        />
+      </div>
+
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12 pt-28 pb-16 md:pb-20">
+        <p className="hero-rise hero-rise-delay-1 font-serif text-hero-foreground/90 text-3xl md:text-4xl tracking-tight mb-6 md:mb-8">
+          JONOVA
+        </p>
+
+        <h1
+          id="hero-heading"
+          className="hero-rise hero-rise-delay-2 max-w-[16ch] font-sans font-semibold text-[2.35rem] sm:text-5xl md:text-6xl xl:text-[4.25rem] leading-[1.05] tracking-tight text-hero-foreground text-balance mb-5"
+        >
+          {t(
+            'Verwaltung, die Sie nicht nachfragen müssen.',
+            'Management you should not have to chase.'
+          )}
+        </h1>
+
+        <p className="hero-rise hero-rise-delay-3 max-w-xl text-base md:text-lg leading-relaxed text-hero-foreground/78 mb-9">
+          {t(
+            'Ein direkter Ansprechpartner. Klare Abläufe. Sorgfältige Betreuung Ihrer Mietliegenschaft in der Schweiz.',
+            'One direct contact. Clear processes. Careful management of your rental property in Switzerland.'
+          )}
+        </p>
+
+        <div className="hero-rise hero-rise-delay-4 flex flex-col sm:flex-row gap-3">
+          <button
+            type="button"
+            onClick={() => startInquiry()}
+            className="inline-flex items-center justify-center px-7 py-3.5 bg-primary text-primary-foreground text-sm font-medium rounded-sm hover:bg-primary/90 active:scale-[0.98] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-foreground/40"
           >
-            {t('Ihre Immobilie.', 'Your property.')}{' '}
-            <span className="text-primary italic">
-              {t('Unsere', 'Our')}
-            </span>{' '}
-            {t('Verantwortung.', 'responsibility.')}
-          </h1>
-
-          <p className="animate-fade-up animation-delay-200 text-lg md:text-xl font-medium tracking-wide text-ink-muted mb-6">
-            {t('Persönlich. Professionell. Zuverlässig.', 'Personal. Professional. Reliable.')}
-          </p>
-
-          <p className="animate-fade-up animation-delay-300 text-base leading-relaxed text-ink-muted max-w-prose mb-10">
-            {t(
-              'JONOVA Immobilienverwaltung betreut Mietliegenschaften mit Sorgfalt, Transparenz und einem hohen Qualitätsanspruch. Wir kümmern uns um die kaufmännische und organisatorische Verwaltung Ihrer Immobilien, damit Sie sich auf das Wesentliche konzentrieren können.',
-              'JONOVA Immobilienverwaltung manages rental properties with care, transparency, and a high standard of quality. We handle the commercial and organisational management of your properties — so you can focus on what matters most.'
-            )}
-          </p>
-
-          <div className="animate-fade-up animation-delay-400 flex flex-col sm:flex-row gap-3">
-            <a
-              href="#kontakt"
-              className="inline-flex items-center justify-center px-7 py-3.5 bg-primary text-primary-foreground text-sm font-medium rounded-sm hover:bg-primary/90 active:scale-[0.98] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              {t('Unverbindliche Anfrage', 'Free enquiry')}
-            </a>
-            <a
-              href="#leistungen"
-              className="inline-flex items-center justify-center px-7 py-3.5 bg-transparent border border-rule text-foreground text-sm font-medium rounded-sm hover:border-primary hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              {t('Unsere Leistungen', 'Our services')}
-            </a>
-          </div>
+            {t('Unverbindliche Anfrage', 'Free enquiry')}
+          </button>
+          <a
+            href="#eigentuemer"
+            className="inline-flex items-center justify-center px-7 py-3.5 bg-transparent border border-hero-foreground/35 text-hero-foreground text-sm font-medium rounded-sm hover:border-hero-foreground hover:bg-hero-foreground/8 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-foreground/40"
+          >
+            {t('Für Eigentümer', 'For owners')}
+          </a>
         </div>
 
-        <div className="relative lg:w-[48%] xl:w-[52%] min-h-[55vw] lg:min-h-0">
-          <span
-            className="hidden lg:block absolute left-0 inset-y-0 w-px bg-rule z-10"
-            aria-hidden="true"
-          />
-          <Image
-            src={assetPath('/images/hero-building.png')}
-            alt={t(
-              'Gepflegtes Mehrfamilienhaus in der Schweiz',
-              'Well-maintained residential apartment building in Switzerland'
-            )}
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 52vw"
-            className="object-cover object-center"
-          />
-          <div
-            className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/20 to-transparent pointer-events-none"
-            aria-hidden="true"
-          />
-        </div>
+        <a
+          href="#eigentuemer"
+          className="hero-rise hero-rise-delay-5 mt-14 inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-hero-foreground/55 hover:text-hero-foreground/85 transition-colors"
+        >
+          <ArrowDown size={14} aria-hidden="true" />
+          {t('Weiterlesen', 'Continue')}
+        </a>
       </div>
     </section>
   )
