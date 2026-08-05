@@ -100,6 +100,16 @@ export default function RootLayout({
   return (
     <html lang="de-CH" className="bg-background scroll-smooth">
       <head>
+        <link
+          rel="preload"
+          as="image"
+          href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/optimized/hero-building-1024.webp`}
+          imageSrcSet={[480, 800, 1024]
+            .map((w) => `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/optimized/hero-building-${w}.webp ${w}w`)
+            .join(', ')}
+          imageSizes="100vw"
+          fetchPriority="high"
+        />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         <meta name="geo.region" content="CH" />
         <meta name="geo.placename" content="Schweiz" />

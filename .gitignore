@@ -33,3 +33,6 @@ next-env.d.ts
 # OS
 .DS_Store
 Thumbs.db
+
+# Generated at build time by scripts/optimize-images.mjs
+/public/optimized

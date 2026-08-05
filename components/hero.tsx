@@ -1,10 +1,11 @@
 'use client'
 
-import Image from 'next/image'
 import { ArrowDown } from 'lucide-react'
-import { assetPath } from '@/lib/asset-path'
+import { optimizedFallback, optimizedSrcSet } from '@/lib/asset-path'
 import { useInquiry } from './inquiry-context'
 import { useLang } from './language-context'
+
+const HERO_WIDTHS = [480, 800, 1024]
 
 export function Hero() {
   const { t } = useLang()
@@ -17,16 +18,17 @@ export function Hero() {
       aria-labelledby="hero-heading"
     >
       <div className="absolute inset-0">
-        <Image
-          src={assetPath('/images/hero-building.png')}
+        <img
+          src={optimizedFallback('hero-building', HERO_WIDTHS)}
+          srcSet={optimizedSrcSet('hero-building', HERO_WIDTHS)}
+          sizes="100vw"
           alt={t(
             'Gepflegtes Mehrfamilienhaus in der Schweiz',
             'Well-maintained residential apartment building in Switzerland'
           )}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center hero-image-motion"
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover object-center hero-image-motion"
         />
         <div
           className="absolute inset-0 bg-[linear-gradient(105deg,rgba(18,28,24,0.88)_0%,rgba(18,28,24,0.62)_42%,rgba(18,28,24,0.28)_100%)]"

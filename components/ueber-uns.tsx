@@ -1,9 +1,10 @@
 'use client'
 
-import Image from 'next/image'
-import { assetPath } from '@/lib/asset-path'
+import { optimizedFallback, optimizedSrcSet } from '@/lib/asset-path'
 import { Reveal } from './reveal'
 import { useLang } from './language-context'
+
+const THUMB_WIDTHS = [480, 800, 1024]
 
 export function UeberUns() {
   const { t } = useLang()
@@ -15,39 +16,45 @@ export function UeberUns() {
           <Reveal>
             <div className="grid grid-cols-2 gap-3">
               <div className="relative overflow-hidden aspect-[3/4] col-span-2 sm:col-span-1 sm:row-span-2 sm:min-h-[380px]">
-                <Image
-                  src={assetPath('/images/about-handshake.png')}
+                <img
+                  src={optimizedFallback('about-handshake', THUMB_WIDTHS)}
+                  srcSet={optimizedSrcSet('about-handshake', THUMB_WIDTHS)}
+                  sizes="(max-width: 640px) 100vw, 25vw"
                   alt={t(
                     'Persönliches Gespräch mit einem Eigentümer',
                     'Personal meeting with a property owner'
                   )}
-                  fill
-                  sizes="(max-width: 640px) 100vw, 25vw"
-                  className="object-cover object-center"
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 w-full h-full object-cover object-center"
                 />
               </div>
               <div className="relative overflow-hidden aspect-square hidden sm:block">
-                <Image
-                  src={assetPath('/images/about-interior.png')}
+                <img
+                  src={optimizedFallback('about-interior', THUMB_WIDTHS)}
+                  srcSet={optimizedSrcSet('about-interior', THUMB_WIDTHS)}
+                  sizes="25vw"
                   alt={t(
                     'Helle Wohnung bereit zur Vermietung',
                     'Bright apartment ready to rent'
                   )}
-                  fill
-                  sizes="25vw"
-                  className="object-cover object-center"
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 w-full h-full object-cover object-center"
                 />
               </div>
               <div className="relative overflow-hidden aspect-square col-span-2 sm:col-span-1">
-                <Image
-                  src={assetPath('/images/hero-building.png')}
+                <img
+                  src={optimizedFallback('hero-building', THUMB_WIDTHS)}
+                  srcSet={optimizedSrcSet('hero-building', THUMB_WIDTHS)}
+                  sizes="(max-width: 640px) 100vw, 25vw"
                   alt={t(
                     'Mehrfamilienhaus unter professioneller Verwaltung',
                     'Apartment building under professional management'
                   )}
-                  fill
-                  sizes="(max-width: 640px) 100vw, 25vw"
-                  className="object-cover object-center"
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 w-full h-full object-cover object-center"
                 />
               </div>
             </div>

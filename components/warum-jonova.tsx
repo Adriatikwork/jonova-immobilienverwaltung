@@ -1,9 +1,10 @@
 'use client'
 
-import Image from 'next/image'
-import { assetPath } from '@/lib/asset-path'
+import { optimizedFallback, optimizedSrcSet } from '@/lib/asset-path'
 import { Reveal } from './reveal'
 import { useLang } from './language-context'
+
+const EXTERIOR_WIDTHS = [480, 800, 1024]
 
 const outcomes = [
   {
@@ -94,15 +95,17 @@ export function WarumJonova() {
 
           <Reveal delayMs={120} className="relative min-h-[360px] lg:min-h-[560px] lg:sticky lg:top-24">
             <div className="absolute inset-0 overflow-hidden rounded-sm">
-              <Image
-                src={assetPath('/images/about-exterior.png')}
+              <img
+                src={optimizedFallback('about-exterior', EXTERIOR_WIDTHS)}
+                srcSet={optimizedSrcSet('about-exterior', EXTERIOR_WIDTHS)}
+                sizes="(max-width: 1024px) 100vw, 40vw"
                 alt={t(
                   'Gepflegte Fassade einer Mietliegenschaft in der Schweiz',
                   'Well-maintained facade of a rental property in Switzerland'
                 )}
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover object-center"
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover object-center"
               />
               <div
                 className="absolute inset-x-0 bottom-0 p-6 bg-[linear-gradient(to_top,rgba(18,28,24,0.72),transparent)]"
