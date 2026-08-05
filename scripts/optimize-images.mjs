@@ -1,9 +1,11 @@
-// Generates responsive WebP variants of the source PNG photography so the
-// browser never has to download the full 2-3MB originals. Runs automatically
-// before `next build`/`next dev` (see package.json), is fully non-destructive
-// (originals are untouched) and idempotent (skips already-fresh output).
+// Generates responsive WebP (+ AVIF for the LCP hero) variants of the source
+// PNG photography so the browser never has to download the full 2-3MB
+// originals. Runs automatically before `next build`/`next dev`
+// (see package.json), is fully non-destructive (originals are untouched) and
+// idempotent (skips already-fresh output).
 //
-// Output: public/optimized/<name>-<width>.webp (git-ignored, regenerated at build time)
+// Output: public/optimized/<name>-<width>.{webp,avif}
+// (git-ignored, regenerated at build time)
 
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
@@ -15,12 +17,13 @@ const publicDir = path.join(root, 'public')
 const imagesDir = path.join(publicDir, 'images')
 const outDir = path.join(publicDir, 'optimized')
 
-// width -> quality: smaller widths can use a slightly lower quality without
-// visible loss because they're viewed at higher effective pixel density.
-const WIDTHS = [480, 800, 1200, 1600]
+// Cap to the largest useful display size. Source PNGs are ~1024px wide, so
+// we never emit larger than that.
+const WIDTHS = [480, 800, 1024]
 const qualityFor = (width) => (width <= 480 ? 70 : width <= 800 ? 74 : 78)
 
 const SOURCES = ['hero-building.png', 'about-exterior.png', 'about-handshake.png', 'about-interior.png']
+const AVIF_SOURCES = new Set(['hero-building.png'])
 
 async function isUpToDate(src, out) {
   try {
@@ -39,23 +42,25 @@ async function optimize(file) {
 
   for (const width of WIDTHS) {
     if (width > (metadata.width ?? width)) continue
-    const out = path.join(outDir, `${base}-${width}.webp`)
-    if (await isUpToDate(src, out)) continue
-    await sharp(src)
-      .resize({ width, withoutEnlargement: true })
-      .webp({ quality: qualityFor(width) })
-      .toFile(out)
-    generated++
-  }
 
-  // Always keep one variant at (or below) the source's native width so the
-  // <img> fallback and largest srcset entry never exceed the original size.
-  const maxWidth = Math.min(metadata.width ?? 1600, 1600)
-  if (!WIDTHS.includes(maxWidth)) {
-    const out = path.join(outDir, `${base}-${maxWidth}.webp`)
-    if (!(await isUpToDate(src, out))) {
-      await sharp(src).webp({ quality: 78 }).toFile(out)
+    const webpOut = path.join(outDir, `${base}-${width}.webp`)
+    if (!(await isUpToDate(src, webpOut))) {
+      await sharp(src)
+        .resize({ width, withoutEnlargement: true })
+        .webp({ quality: qualityFor(width) })
+        .toFile(webpOut)
       generated++
+    }
+
+    if (AVIF_SOURCES.has(file)) {
+      const avifOut = path.join(outDir, `${base}-${width}.avif`)
+      if (!(await isUpToDate(src, avifOut))) {
+        await sharp(src)
+          .resize({ width, withoutEnlargement: true })
+          .avif({ quality: 48, effort: 5 })
+          .toFile(avifOut)
+        generated++
+      }
     }
   }
 
@@ -79,7 +84,7 @@ async function main() {
   }
 
   console.log(
-    `[optimize-images] ${SOURCES.length} source images checked, ${generated} WebP variants (re)generated` +
+    `[optimize-images] ${SOURCES.length} source images checked, ${generated} variants (re)generated` +
       (missing ? `, ${missing} MISSING` : '')
   )
 }

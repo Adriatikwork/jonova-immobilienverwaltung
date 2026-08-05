@@ -14,13 +14,13 @@ import './globals.css'
 const instrumentSans = Instrument_Sans({
   subsets: ['latin'],
   variable: '--font-sans',
-  display: 'swap',
+  display: 'fallback',
 })
 
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-serif',
-  display: 'swap',
+  display: 'fallback',
 })
 
 export const metadata: Metadata = {
@@ -103,9 +103,10 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/optimized/hero-building-1024.webp`}
+          type="image/avif"
+          href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/optimized/hero-building-800.avif`}
           imageSrcSet={[480, 800, 1024]
-            .map((w) => `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/optimized/hero-building-${w}.webp ${w}w`)
+            .map((w) => `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/optimized/hero-building-${w}.avif ${w}w`)
             .join(', ')}
           imageSizes="100vw"
           fetchPriority="high"

@@ -18,18 +18,25 @@ export function Hero() {
       aria-labelledby="hero-heading"
     >
       <div className="absolute inset-0">
-        <img
-          src={optimizedFallback('hero-building', HERO_WIDTHS)}
-          srcSet={optimizedSrcSet('hero-building', HERO_WIDTHS)}
-          sizes="100vw"
-          alt={t(
-            'Gepflegtes Mehrfamilienhaus in der Schweiz',
-            'Well-maintained residential apartment building in Switzerland'
-          )}
-          fetchPriority="high"
-          decoding="async"
-          className="absolute inset-0 w-full h-full object-cover object-center hero-image-motion"
-        />
+        <picture>
+          <source
+            type="image/avif"
+            srcSet={optimizedSrcSet('hero-building', HERO_WIDTHS, 'avif')}
+            sizes="100vw"
+          />
+          <img
+            src={optimizedFallback('hero-building', HERO_WIDTHS)}
+            srcSet={optimizedSrcSet('hero-building', HERO_WIDTHS)}
+            sizes="100vw"
+            alt={t(
+              'Gepflegtes Mehrfamilienhaus in der Schweiz',
+              'Well-maintained residential apartment building in Switzerland'
+            )}
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover object-center hero-image-motion"
+          />
+        </picture>
         <div
           className="absolute inset-0 bg-[linear-gradient(105deg,rgba(18,28,24,0.88)_0%,rgba(18,28,24,0.62)_42%,rgba(18,28,24,0.28)_100%)]"
           aria-hidden="true"

@@ -7,13 +7,19 @@ export function assetPath(path: string): string {
 
 /**
  * Builds a `srcSet` string for a photo pre-processed by
- * scripts/optimize-images.mjs (public/optimized/<name>-<width>.webp).
+ * scripts/optimize-images.mjs (public/optimized/<name>-<width>.{webp,avif}).
  */
-export function optimizedSrcSet(name: string, widths: number[]): string {
-  return widths.map((w) => `${assetPath(`/optimized/${name}-${w}.webp`)} ${w}w`).join(', ')
+export function optimizedSrcSet(
+  name: string,
+  widths: number[],
+  format: 'webp' | 'avif' = 'webp'
+): string {
+  return widths
+    .map((w) => `${assetPath(`/optimized/${name}-${w}.${format}`)} ${w}w`)
+    .join(', ')
 }
 
-/** Largest generated variant, used as the plain `src` fallback. */
+/** Largest generated WebP variant, used as the plain `src` fallback. */
 export function optimizedFallback(name: string, widths: number[]): string {
   return assetPath(`/optimized/${name}-${Math.max(...widths)}.webp`)
 }

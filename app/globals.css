@@ -224,3 +224,10 @@
   text-transform: uppercase;
   color: var(--ink-muted);
 }
+
+/* Defer layout/paint for below-fold sections until they approach the viewport.
+   Hero (#startseite) stays eager so LCP is unaffected. */
+main > section:not(#startseite) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
