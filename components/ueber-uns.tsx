@@ -21,12 +21,12 @@ export function UeberUns() {
             <div className="grid grid-cols-2 gap-3">
               <div className="relative overflow-hidden aspect-[3/4] col-span-2 sm:col-span-1 sm:row-span-2 sm:min-h-[380px]">
                 <img
-                  src={optimizedFallback('about-handshake', THUMB_WIDTHS)}
-                  srcSet={optimizedSrcSet('about-handshake', THUMB_WIDTHS)}
+                  src={optimizedFallback('about-exterior', THUMB_WIDTHS)}
+                  srcSet={optimizedSrcSet('about-exterior', THUMB_WIDTHS)}
                   sizes="(max-width: 640px) 100vw, 25vw"
                   alt={t(
-                    'Persönliches Gespräch mit einem Eigentümer',
-                    'Personal meeting with a property owner'
+                    'Moderne Wohnanlage in Zürich und Umgebung',
+                    'Modern residential complex in Zurich and the region'
                   )}
                   loading="lazy"
                   decoding="async"
@@ -35,12 +35,12 @@ export function UeberUns() {
               </div>
               <div className="relative overflow-hidden aspect-square hidden sm:block">
                 <img
-                  src={optimizedFallback('hero-building', THUMB_WIDTHS)}
-                  srcSet={optimizedSrcSet('hero-building', THUMB_WIDTHS)}
+                  src={optimizedFallback('about-commercial', THUMB_WIDTHS)}
+                  srcSet={optimizedSrcSet('about-commercial', THUMB_WIDTHS)}
                   sizes="25vw"
                   alt={t(
-                    'Modernes Mehrfamilienhaus in Zürich und Umgebung',
-                    'Modern apartment building in Zurich and the region'
+                    'Modernes Geschäftsobjekt für Gewerbe- und Retailflächen',
+                    'Modern commercial building for business and retail space'
                   )}
                   loading="lazy"
                   decoding="async"
@@ -53,8 +53,8 @@ export function UeberUns() {
                   srcSet={optimizedSrcSet('about-interior', THUMB_WIDTHS)}
                   sizes="(max-width: 640px) 100vw, 25vw"
                   alt={t(
-                    'Moderne Mietwohnung in gepflegtem Zustand',
-                    'Modern rental apartment in well-kept condition'
+                    'Gepflegte Mietwohnung mit Blick auf Mehrfamilienhäuser',
+                    'Well-kept rental apartment overlooking apartment buildings'
                   )}
                   loading="lazy"
                   decoding="async"

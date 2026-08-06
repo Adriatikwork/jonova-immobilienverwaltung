@@ -96,12 +96,12 @@ export function WarumJonova() {
           <Reveal delayMs={120} className="relative min-h-[360px] lg:min-h-[560px] lg:sticky lg:top-24">
             <div className="absolute inset-0 overflow-hidden rounded-sm">
               <img
-                src={optimizedFallback('hero-building', EXTERIOR_WIDTHS)}
-                srcSet={optimizedSrcSet('hero-building', EXTERIOR_WIDTHS)}
+                src={optimizedFallback('about-exterior', EXTERIOR_WIDTHS)}
+                srcSet={optimizedSrcSet('about-exterior', EXTERIOR_WIDTHS)}
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 alt={t(
-                  'Modernes Mehrfamilienhaus unter professioneller Verwaltung',
-                  'Modern apartment building under professional management'
+                  'Gepflegte Wohnanlage unter professioneller Verwaltung',
+                  'Well-kept residential complex under professional management'
                 )}
                 loading="lazy"
                 decoding="async"

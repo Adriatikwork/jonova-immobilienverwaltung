@@ -1,11 +1,8 @@
 // Generates responsive WebP (+ AVIF for the LCP hero) variants of the source
-// PNG photography so the browser never has to download the full 2-3MB
-// originals. Runs automatically before `next build`/`next dev`
-// (see package.json), is fully non-destructive (originals are untouched) and
-// idempotent (skips already-fresh output).
+// photography so the browser never has to download the full originals.
+// Runs automatically before `next build`/`next dev` (see package.json).
 //
 // Output: public/optimized/<name>-<width>.{webp,avif}
-// (git-ignored, regenerated at build time)
 
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
@@ -17,12 +14,15 @@ const publicDir = path.join(root, 'public')
 const imagesDir = path.join(publicDir, 'images')
 const outDir = path.join(publicDir, 'optimized')
 
-// Cap to the largest useful display size. Source PNGs are ~1024px wide, so
-// we never emit larger than that.
 const WIDTHS = [480, 800, 1024]
 const qualityFor = (width) => (width <= 480 ? 70 : width <= 800 ? 74 : 78)
 
-const SOURCES = ['hero-building.png', 'about-exterior.png', 'about-handshake.png', 'about-interior.png']
+const SOURCES = [
+  'hero-building.png',
+  'about-exterior.png',
+  'about-commercial.png',
+  'about-interior.png',
+]
 const AVIF_SOURCES = new Set(['hero-building.png'])
 
 async function isUpToDate(src, out) {

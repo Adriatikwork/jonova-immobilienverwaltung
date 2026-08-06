@@ -29,12 +29,12 @@ export function Hero() {
             srcSet={optimizedSrcSet('hero-building', HERO_WIDTHS)}
             sizes="100vw"
             alt={t(
-              'Modernes Mehrfamilienhaus in der Schweiz',
-              'Modern residential apartment building in Switzerland'
+              'Modernes Mehrfamilienhaus in Zürich und Umgebung',
+              'Modern apartment complex in Zurich and the region'
             )}
             fetchPriority="high"
             decoding="async"
-            className="absolute inset-0 w-full h-full object-cover object-center hero-image-motion"
+            className="absolute inset-0 w-full h-full object-cover object-[center_35%] hero-image-motion"
           />
         </picture>
         <div
