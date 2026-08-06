@@ -26,7 +26,7 @@ const playfairDisplay = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} | Mietliegenschaften Schweiz`,
+    default: `${SITE_NAME} | Zürich und Umgebung`,
     template: `%s | ${SITE_NAME_SHORT}`,
   },
   description: SITE_DESCRIPTION_DE,
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   category: 'Business',
   classification: 'Property Management',
   openGraph: {
-    title: `${SITE_NAME} | Verwaltung, die Sie nicht nachfragen müssen.`,
+    title: `${SITE_NAME} | Persönliche Immobilienverwaltung`,
     description: SITE_DESCRIPTION_DE,
     type: 'website',
     url: SITE_URL,
@@ -51,13 +51,13 @@ export const metadata: Metadata = {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: `${SITE_NAME} | Professionelle Verwaltung von Mietliegenschaften`,
+        alt: `${SITE_NAME} | Persönliche Immobilienverwaltung in Zürich`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE_NAME} | Mietliegenschaften Schweiz`,
+    title: `${SITE_NAME} | Zürich und Umgebung`,
     description: SITE_DESCRIPTION_DE,
     images: ['/og-image.jpg'],
   },
@@ -113,7 +113,7 @@ export default function RootLayout({
         />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         <meta name="geo.region" content="CH" />
-        <meta name="geo.placename" content="Schweiz" />
+        <meta name="geo.placename" content="Zürich" />
         <meta name="MobileOptimized" content="width" />
         <meta name="HandheldFriendly" content="true" />
         <meta name="apple-mobile-web-app-capable" content="yes" />

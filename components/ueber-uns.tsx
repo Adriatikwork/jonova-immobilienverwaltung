@@ -10,9 +10,13 @@ export function UeberUns() {
   const { t } = useLang()
 
   return (
-    <section id="ueber-uns" className="py-24 md:py-32 overflow-hidden" aria-labelledby="ueber-heading">
+    <section
+      id="ueber-uns"
+      className="py-28 md:py-40 overflow-hidden"
+      aria-labelledby="ueber-heading"
+    >
       <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-14 lg:gap-20 items-center">
           <Reveal>
             <div className="grid grid-cols-2 gap-3">
               <div className="relative overflow-hidden aspect-[3/4] col-span-2 sm:col-span-1 sm:row-span-2 sm:min-h-[380px]">
@@ -31,12 +35,12 @@ export function UeberUns() {
               </div>
               <div className="relative overflow-hidden aspect-square hidden sm:block">
                 <img
-                  src={optimizedFallback('about-interior', THUMB_WIDTHS)}
-                  srcSet={optimizedSrcSet('about-interior', THUMB_WIDTHS)}
+                  src={optimizedFallback('hero-building', THUMB_WIDTHS)}
+                  srcSet={optimizedSrcSet('hero-building', THUMB_WIDTHS)}
                   sizes="25vw"
                   alt={t(
-                    'Helle Wohnung bereit zur Vermietung',
-                    'Bright apartment ready to rent'
+                    'Modernes Mehrfamilienhaus in Zürich und Umgebung',
+                    'Modern apartment building in Zurich and the region'
                   )}
                   loading="lazy"
                   decoding="async"
@@ -45,12 +49,12 @@ export function UeberUns() {
               </div>
               <div className="relative overflow-hidden aspect-square col-span-2 sm:col-span-1">
                 <img
-                  src={optimizedFallback('hero-building', THUMB_WIDTHS)}
-                  srcSet={optimizedSrcSet('hero-building', THUMB_WIDTHS)}
+                  src={optimizedFallback('about-interior', THUMB_WIDTHS)}
+                  srcSet={optimizedSrcSet('about-interior', THUMB_WIDTHS)}
                   sizes="(max-width: 640px) 100vw, 25vw"
                   alt={t(
-                    'Mehrfamilienhaus unter professioneller Verwaltung',
-                    'Apartment building under professional management'
+                    'Moderne Mietwohnung in gepflegtem Zustand',
+                    'Modern rental apartment in well-kept condition'
                   )}
                   loading="lazy"
                   decoding="async"
@@ -69,27 +73,27 @@ export function UeberUns() {
               className="font-sans font-semibold text-3xl md:text-4xl lg:text-[2.75rem] tracking-tight text-foreground leading-[1.15] text-balance mb-8"
             >
               {t(
-                'Kurz entschieden. Persönlich betreut.',
-                'Short decisions. Personal care.'
+                'Eine moderne Verwaltung mit persönlichem Anspruch.',
+                'A modern management firm with a personal standard.'
               )}
             </h2>
             <div className="space-y-5 text-base leading-relaxed text-ink-muted text-pretty max-w-prose">
               <p>
                 {t(
-                  'JONOVA Immobilienverwaltung betreut Mietliegenschaften in der Schweiz mit Fokus auf persönliche Erreichbarkeit und nachvollziehbare Abläufe, ohne unnötige Bürokratie.',
-                  'JONOVA Immobilienverwaltung manages rental properties in Switzerland with a focus on personal reachability and clear processes, without unnecessary bureaucracy.'
+                  'JONOVA Immobilienverwaltung betreut Mietliegenschaften sowie Gewerbe- und Retailflächen mit Fokus auf Zürich und Umgebung, persönlich erreichbar und mit klaren Abläufen.',
+                  'JONOVA Immobilienverwaltung manages rental properties as well as commercial and retail space with a focus on Zurich and the surrounding region, personally reachable and with clear processes.'
                 )}
               </p>
               <p>
                 {t(
-                  'Wir setzen auf kurze Entscheidungswege und die individuelle Betrachtung jeder Liegenschaft. Unser Anspruch: Eigentümer entlasten und den langfristigen Werterhalt sicherstellen.',
-                  'We rely on short decision paths and treat every property individually. Our aim: relieve owners and protect long-term value.'
+                  'Als junges Unternehmen setzen wir auf kurze Wege, individuelle Betreuung und einen modernen, seriösen Auftritt, ohne den Charakter einer anonymen Grossverwaltung.',
+                  'As a young company we rely on short paths, individual care and a modern, serious presence, without the character of an anonymous large management firm.'
                 )}
               </p>
               <p className="text-foreground font-medium">
                 {t(
-                  'Sie sprechen mit Menschen, die Verantwortung übernehmen, nicht mit einer Warteschleife.',
-                  'You speak with people who take responsibility, not a hold queue.'
+                  'Sie sprechen mit Menschen, die Verantwortung übernehmen.',
+                  'You speak with people who take responsibility.'
                 )}
               </p>
             </div>

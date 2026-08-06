@@ -29,8 +29,8 @@ export function Hero() {
             srcSet={optimizedSrcSet('hero-building', HERO_WIDTHS)}
             sizes="100vw"
             alt={t(
-              'Gepflegtes Mehrfamilienhaus in der Schweiz',
-              'Well-maintained residential apartment building in Switzerland'
+              'Modernes Mehrfamilienhaus in der Schweiz',
+              'Modern residential apartment building in Switzerland'
             )}
             fetchPriority="high"
             decoding="async"
@@ -38,56 +38,50 @@ export function Hero() {
           />
         </picture>
         <div
-          className="absolute inset-0 bg-[linear-gradient(105deg,rgba(18,28,24,0.88)_0%,rgba(18,28,24,0.62)_42%,rgba(18,28,24,0.28)_100%)]"
+          className="absolute inset-0 bg-[linear-gradient(105deg,rgba(18,36,58,0.88)_0%,rgba(18,36,58,0.58)_45%,rgba(18,36,58,0.22)_100%)]"
           aria-hidden="true"
         />
         <div
-          className="absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(to_top,rgba(18,28,24,0.55),transparent)]"
+          className="absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(to_top,rgba(18,36,58,0.55),transparent)]"
           aria-hidden="true"
         />
       </div>
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12 pt-28 pb-16 md:pb-20">
-        <p className="hero-rise hero-rise-delay-1 font-serif text-hero-foreground/90 text-3xl md:text-4xl tracking-tight mb-6 md:mb-8">
+        <p className="hero-rise hero-rise-delay-1 font-sans font-semibold text-hero-foreground text-2xl md:text-3xl tracking-[0.12em] uppercase mb-6 md:mb-8">
           JONOVA
         </p>
 
         <h1
           id="hero-heading"
-          className="hero-rise hero-rise-delay-2 max-w-[16ch] font-sans font-semibold text-[2.35rem] sm:text-5xl md:text-6xl xl:text-[4.25rem] leading-[1.05] tracking-tight text-hero-foreground text-balance mb-5"
+          className="hero-rise hero-rise-delay-2 max-w-[18ch] font-sans font-semibold text-[2.35rem] sm:text-5xl md:text-6xl xl:text-[4.1rem] leading-[1.05] tracking-tight text-hero-foreground text-balance mb-5"
         >
           {t(
-            'Verwaltung, die Sie nicht nachfragen müssen.',
-            'Management you should not have to chase.'
+            'Persönliche Immobilienverwaltung in Zürich und Umgebung.',
+            'Personal property management in Zurich and the region.'
           )}
         </h1>
 
-        <p className="hero-rise hero-rise-delay-3 max-w-xl text-base md:text-lg leading-relaxed text-hero-foreground/78 mb-9">
+        <p className="hero-rise hero-rise-delay-3 max-w-xl text-base md:text-lg leading-relaxed text-hero-foreground/78 mb-10">
           {t(
-            'Ein direkter Ansprechpartner. Klare Abläufe. Sorgfältige Betreuung Ihrer Mietliegenschaft in der Schweiz.',
-            'One direct contact. Clear processes. Careful management of your rental property in Switzerland.'
+            'Moderne, sorgfältige Betreuung von Mietliegenschaften, Gewerbe- und Retailflächen. Ein direkter Ansprechpartner. Klare Abläufe.',
+            'Modern, careful management of rental properties, commercial and retail space. One direct contact. Clear processes.'
           )}
         </p>
 
-        <div className="hero-rise hero-rise-delay-4 flex flex-col sm:flex-row gap-3">
+        <div className="hero-rise hero-rise-delay-4">
           <button
             type="button"
             onClick={() => startInquiry()}
-            className="inline-flex items-center justify-center px-7 py-3.5 bg-primary text-primary-foreground text-sm font-medium rounded-sm hover:bg-primary/90 active:scale-[0.98] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-foreground/40"
+            className="btn-quiet-ghost"
           >
             {t('Unverbindliche Anfrage', 'Free enquiry')}
           </button>
-          <a
-            href="#eigentuemer"
-            className="inline-flex items-center justify-center px-7 py-3.5 bg-transparent border border-hero-foreground/35 text-hero-foreground text-sm font-medium rounded-sm hover:border-hero-foreground hover:bg-hero-foreground/8 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-foreground/40"
-          >
-            {t('Für Eigentümer', 'For owners')}
-          </a>
         </div>
 
         <a
           href="#eigentuemer"
-          className="hero-rise hero-rise-delay-5 mt-14 inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-hero-foreground/55 hover:text-hero-foreground/85 transition-colors"
+          className="hero-rise hero-rise-delay-5 mt-16 inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-hero-foreground/55 hover:text-hero-foreground/85 transition-colors"
         >
           <ArrowDown size={14} aria-hidden="true" />
           {t('Weiterlesen', 'Continue')}

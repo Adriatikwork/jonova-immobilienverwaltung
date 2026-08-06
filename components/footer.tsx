@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { assetPath } from '@/lib/asset-path'
 import { useLang } from './language-context'
 
 export function Footer() {
@@ -21,23 +22,32 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-foreground text-primary-foreground" role="contentinfo">
-      <div className="max-w-6xl mx-auto px-6 md:px-12 py-14 md:py-16">
-        <div className="grid md:grid-cols-[1fr_auto] gap-10 items-start">
+    <footer className="bg-primary text-primary-foreground" role="contentinfo">
+      <div className="max-w-6xl mx-auto px-6 md:px-12 py-16 md:py-20">
+        <div className="grid md:grid-cols-[1fr_auto] gap-12 items-start">
           <div className="flex flex-col gap-4 max-w-sm">
-            <div className="flex items-baseline gap-2">
-              <span
-                className="flex items-center justify-center w-8 h-8 rounded-sm bg-primary text-primary-foreground font-serif font-bold text-base select-none"
+            <div className="flex items-center gap-3">
+              <img
+                src={assetPath('/images/logo.jpeg')}
+                alt=""
+                width={40}
+                height={40}
+                className="h-10 w-10 object-contain rounded-sm bg-white"
                 aria-hidden="true"
-              >
-                J
-              </span>
-              <span className="font-sans font-semibold text-sm tracking-wide">JONOVA</span>
+              />
+              <div>
+                <p className="font-sans font-semibold text-sm tracking-[0.14em] uppercase">
+                  JONOVA
+                </p>
+                <p className="text-[10px] tracking-[0.18em] uppercase text-primary-foreground/55 mt-0.5">
+                  Immobilienverwaltung
+                </p>
+              </div>
             </div>
             <p className="text-sm leading-relaxed text-primary-foreground/60 text-pretty">
               {t(
-                'Persönliche Verwaltung von Mietliegenschaften in der Schweiz. Erreichbar, klar, sorgfältig.',
-                'Personal management of rental properties in Switzerland. Reachable, clear, careful.'
+                'Persönliche Immobilienverwaltung in Zürich und Umgebung. Modern, erreichbar, sorgfältig.',
+                'Personal property management in Zurich and the region. Modern, reachable, careful.'
               )}
             </p>
           </div>
@@ -78,7 +88,7 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-primary-foreground/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="mt-14 pt-6 border-t border-primary-foreground/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <p className="text-xs text-primary-foreground/40">
             &copy; {year} JONOVA Immobilienverwaltung.{' '}
             {t('Alle Rechte vorbehalten.', 'All rights reserved.')}
@@ -97,7 +107,7 @@ export function Footer() {
               ·
             </span>
             <span className="text-primary-foreground/40">
-              {t('Schweiz', 'Switzerland')}
+              {t('Zürich und Umgebung', 'Zurich and region')}
             </span>
           </div>
         </div>

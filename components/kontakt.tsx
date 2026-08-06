@@ -13,10 +13,13 @@ type SubmitStatus = 'idle' | 'success' | 'error'
 
 const PROPERTY_OPTIONS = [
   { value: 'mfh', de: 'Mehrfamilienhaus', en: 'Apartment building' },
-  { value: 'efh', de: 'Einfamilienhaus', en: 'Single-family home' },
+  {
+    value: 'gewerbe',
+    de: 'Gewerbeflächen & Retailflächen',
+    en: 'Commercial & retail space',
+  },
   { value: 'einzeln', de: 'Einzelne Wohnung', en: 'Single flat' },
-  { value: 'gwg', de: 'Gewerbe', en: 'Commercial' },
-  { value: 'portfolio', de: 'Portfolio', en: 'Portfolio' },
+  { value: 'portfolio', de: 'Mehrere Objekte', en: 'Several properties' },
   { value: 'sonstiges', de: 'Sonstiges', en: 'Other' },
 ] as const
 
@@ -92,7 +95,7 @@ export function Kontakt() {
   }
 
   return (
-    <section id="kontakt" className="py-24 md:py-32" aria-labelledby="kontakt-heading">
+    <section id="kontakt" className="py-28 md:py-40" aria-labelledby="kontakt-heading">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <div className="grid lg:grid-cols-[1fr_1.35fr] gap-14 lg:gap-20">
           <Reveal>
@@ -110,8 +113,8 @@ export function Kontakt() {
             </h2>
             <p className="text-base leading-relaxed text-ink-muted text-pretty mb-10 max-w-prose">
               {t(
-                'Ob einzelne Liegenschaft oder Portfolio: Schildern Sie kurz Ihre Situation. Wir melden uns persönlich und entwickeln eine passende Verwaltungslösung.',
-                'Whether a single property or a portfolio: briefly describe your situation. We reply personally and develop a suitable management solution.'
+                'Schildern Sie kurz Ihre Situation. Wir melden uns persönlich und besprechen eine passende Verwaltungslösung für Ihre Liegenschaft.',
+                'Briefly describe your situation. We reply personally and discuss a suitable management solution for your property.'
               )}
             </p>
 
@@ -169,8 +172,8 @@ export function Kontakt() {
                   </p>
                   <p className="text-xs text-ink-muted mt-1">
                     {t(
-                      'Persönliche Beratung für Eigentümer in der Schweiz.',
-                      'Personal advice for property owners in Switzerland.'
+                      'Schwerpunkt Zürich und Umgebung. Schweizweit auf Anfrage.',
+                      'Focus on Zurich and the region. Switzerland-wide on request.'
                     )}
                   </p>
                 </div>
@@ -312,7 +315,7 @@ export function Kontakt() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 bg-primary text-primary-foreground text-sm font-medium rounded-sm hover:bg-primary/90 active:scale-[0.99] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-60 disabled:pointer-events-none inline-flex items-center justify-center gap-2"
+                    className="btn-quiet w-full disabled:opacity-60 disabled:pointer-events-none gap-2"
                   >
                     {isSubmitting && <Loader2 size={16} className="animate-spin" />}
                     {isSubmitting

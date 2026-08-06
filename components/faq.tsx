@@ -11,24 +11,28 @@ export function Faq() {
   const [openId, setOpenId] = useState<number | null>(0)
 
   return (
-    <section id="faq" className="bg-surface py-24 md:py-32" aria-labelledby="faq-heading">
+    <section
+      id="faq"
+      className="bg-surface py-28 md:py-40"
+      aria-labelledby="faq-heading"
+    >
       <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-20">
+        <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-14 lg:gap-24">
           <Reveal>
             <p className="section-eyebrow mb-4">FAQ</p>
             <h2
               id="faq-heading"
-              className="font-sans font-semibold text-3xl md:text-4xl tracking-tight text-foreground leading-[1.15] text-balance mb-4"
+              className="font-sans font-semibold text-3xl md:text-4xl tracking-tight text-foreground leading-[1.15] text-balance mb-5"
             >
               {t(
-                'Fragen, die Eigentümer wirklich stellen.', 
+                'Fragen, die Eigentümer wirklich stellen.',
                 'Questions owners actually ask.'
               )}
             </h2>
             <p className="text-sm leading-relaxed text-ink-muted max-w-sm">
               {t(
-                'Kosten, Wechsel und Erreichbarkeit entscheiden. Nicht Werbeslogans.',
-                'Cost, switching and reachability decide. Not slogans.'
+                'Kosten, Wechsel und Erreichbarkeit. Klar und ohne Werbeslogans.',
+                'Cost, switching and reachability. Clear, without slogans.'
               )}
             </p>
           </Reveal>
@@ -41,7 +45,7 @@ export function Faq() {
                   <div className="border-b border-rule">
                     <button
                       type="button"
-                      className="group w-full flex items-start justify-between gap-6 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      className="group w-full flex items-start justify-between gap-6 py-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                       aria-expanded={open}
                       onClick={() => setOpenId(open ? null : i)}
                     >
@@ -57,7 +61,7 @@ export function Faq() {
                       />
                     </button>
                     {open && (
-                      <p className="pb-5 pr-10 text-sm leading-relaxed text-ink-muted text-pretty max-w-2xl">
+                      <p className="pb-6 pr-10 text-sm leading-relaxed text-ink-muted text-pretty max-w-2xl">
                         {lang === 'de' ? faq.aDe : faq.aEn}
                       </p>
                     )}

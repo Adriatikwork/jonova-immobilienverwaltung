@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
+import { assetPath } from '@/lib/asset-path'
 import { LanguageProvider, useLang } from './language-context'
 import { CONTACT, SITE_NAME, SITE_NAME_SHORT } from '@/lib/site'
 
@@ -21,16 +22,18 @@ function LegalChromeInner({
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
           <Link
             href="/"
-            className="flex items-baseline gap-2 focus-visible:outline-none"
+            className="flex items-center gap-2.5 focus-visible:outline-none"
             aria-label={SITE_NAME}
           >
-            <span
-              className="flex items-center justify-center w-8 h-8 rounded-sm bg-primary text-primary-foreground font-serif font-bold text-base select-none"
+            <img
+              src={assetPath('/images/logo.jpeg')}
+              alt=""
+              width={36}
+              height={36}
+              className="h-9 w-9 object-contain rounded-sm bg-white shadow-sm ring-1 ring-black/5"
               aria-hidden="true"
-            >
-              J
-            </span>
-            <span className="font-sans font-semibold text-sm tracking-wide text-foreground">
+            />
+            <span className="font-sans font-semibold text-sm tracking-[0.14em] uppercase text-foreground">
               {SITE_NAME_SHORT}
             </span>
           </Link>
@@ -66,7 +69,7 @@ function LegalChromeInner({
             </Link>
             <Link
               href="/#kontakt"
-              className="text-sm px-3 py-1.5 rounded-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+              className="text-sm px-3 py-1.5 rounded-sm border border-primary/30 text-primary hover:border-gold hover:bg-surface transition-colors"
             >
               {t('Kontakt', 'Contact')}
             </Link>
@@ -125,7 +128,7 @@ function LegalChromeInner({
         {children}
       </main>
 
-      <footer className="bg-foreground text-primary-foreground mt-auto">
+      <footer className="bg-primary text-primary-foreground mt-auto">
         <div className="max-w-6xl mx-auto px-6 md:px-12 py-10 flex flex-col sm:flex-row justify-between gap-4">
           <p className="text-xs text-primary-foreground/50">
             &copy; {year} {SITE_NAME}. {t('Alle Rechte vorbehalten.', 'All rights reserved.')}

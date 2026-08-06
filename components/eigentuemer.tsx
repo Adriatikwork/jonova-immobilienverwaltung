@@ -1,6 +1,6 @@
 'use client'
 
-import { Building2, Home, Layers } from 'lucide-react'
+import { Building2, Store, Handshake } from 'lucide-react'
 import { Reveal } from './reveal'
 import { useInquiry, type PropertyType } from './inquiry-context'
 import { useLang } from './language-context'
@@ -16,40 +16,40 @@ const paths: {
   ctaEn: string
 }[] = [
   {
-    type: 'mfh', 
-    icon: Building2, 
-    titleDe: 'Mehrfamilienhaus', 
-    titleEn: 'Apartment building', 
+    type: 'mfh',
+    icon: Building2,
+    titleDe: 'Mehrfamilienhaus',
+    titleEn: 'Apartment building',
     bodyDe:
-      'Sie wollen die laufende Verwaltung abgeben: Mieterkommunikation, Unterhalt und Organisation aus einer Hand.',
+      'Sie möchten die laufende Verwaltung abgeben: Mieterkommunikation, Unterhalt und Organisation aus einer Hand.',
     bodyEn:
       'You want to hand over day-to-day management: tenant communication, maintenance and organisation in one place.',
     ctaDe: 'Anfrage für MFH',
     ctaEn: 'Enquire for building',
   },
   {
-    type: 'einzeln',
-    icon: Home,
-    titleDe: 'Wohnung vermieten',
-    titleEn: 'Letting a flat',
+    type: 'gewerbe',
+    icon: Store,
+    titleDe: 'Gewerbeflächen & Retailflächen',
+    titleEn: 'Commercial & retail space',
     bodyDe:
-      'Sie vermieten nebenher oder haben eine einzelne Einheit und brauchen Entlastung ohne Unternehmenskomplexität.',
+      'Geschäfts- oder Ladenflächen, die eine klare, verlässliche Verwaltung brauchen, ohne unnötige Komplexität.',
     bodyEn:
-      'You let on the side or own a single unit and want relief without corporate complexity.',
-    ctaDe: 'Anfrage für Wohnung',
-    ctaEn: 'Enquire for flat',
+      'Commercial or retail space that needs clear, reliable management, without unnecessary complexity.',
+    ctaDe: 'Anfrage für Gewerbe',
+    ctaEn: 'Enquire for commercial',
   },
   {
     type: 'portfolio',
-    icon: Layers,
-    titleDe: 'Kleines Portfolio',
-    titleEn: 'Small portfolio',
+    icon: Handshake,
+    titleDe: 'Persönliche Eigentümerbetreuung',
+    titleEn: 'Personal owner support',
     bodyDe:
-      'Mehrere Objekte, kurze Wege und ein Ansprechpartner der den Überblick behält, ohne anonyme Hotline.',
+      'Ein oder mehrere Objekte, kurze Wege und ein Ansprechpartner, der Ihre Situation kennt.',
     bodyEn:
-      'Several properties, short paths and one contact who keeps the overview, without an anonymous hotline.',
-    ctaDe: 'Anfrage für Portfolio',
-    ctaEn: 'Enquire for portfolio',
+      'One or several properties, short paths and one contact who knows your situation.',
+    ctaDe: 'Persönlich anfragen',
+    ctaEn: 'Enquire personally',
   },
 ]
 
@@ -60,11 +60,11 @@ export function Eigentuemer() {
   return (
     <section
       id="eigentuemer"
-      className="py-24 md:py-32 border-b border-rule"
+      className="py-28 md:py-40 border-b border-rule"
       aria-labelledby="eigentuemer-heading"
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <Reveal className="mb-14 max-w-2xl">
+        <Reveal className="mb-16 md:mb-20 max-w-2xl">
           <p className="section-eyebrow mb-4">
             {t('Für Eigentümer', 'For owners')}
           </p>
@@ -77,7 +77,7 @@ export function Eigentuemer() {
               'Which situation fits you?'
             )}
           </h2>
-          <p className="mt-4 text-base text-ink-muted leading-relaxed max-w-prose">
+          <p className="mt-5 text-base text-ink-muted leading-relaxed max-w-prose">
             {t(
               'Wählen Sie Ihre Ausgangslage. Wir führen Sie direkt zur passenden Anfrage.',
               'Choose your starting point. We take you straight to the right enquiry.'
@@ -85,13 +85,13 @@ export function Eigentuemer() {
           </p>
         </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-px bg-rule">
+        <div className="grid md:grid-cols-3 gap-10 md:gap-12">
           {paths.map((path, i) => {
             const Icon = path.icon
             return (
-              <Reveal key={path.type} delayMs={i * 90} className="bg-background">
-                <article className="h-full flex flex-col p-8 md:p-9">
-                  <span className="mb-6 inline-flex h-10 w-10 items-center justify-center rounded-sm bg-surface text-primary">
+              <Reveal key={path.type} delayMs={i * 90}>
+                <article className="h-full flex flex-col">
+                  <span className="mb-6 inline-flex h-10 w-10 items-center justify-center rounded-sm bg-surface text-primary border border-rule/70">
                     <Icon size={20} strokeWidth={1.5} aria-hidden="true" />
                   </span>
                   <h3 className="font-sans font-semibold text-xl text-foreground mb-3 tracking-tight">

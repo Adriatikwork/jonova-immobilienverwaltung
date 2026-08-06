@@ -1,12 +1,9 @@
 /*
- * JONOVA Immobilienverwaltung, Landing Page
+ * JONOVA Immobilienverwaltung — Landing Page
  *
- * Redesign direction (2026):
- * - Specific owner promise over adjectives (reachability, clear accounts)
- * - Full-bleed place-first hero; JONOVA as hero-level brand signal
- * - Owner-path CTAs → prefilled enquiry (ClearLead / Resonus pattern)
- * - FAQ addressing forum pain points (Erreichbarkeit, Kosten, Wechsel)
- * - Quiet motion only (hero rise, scroll reveal, soft ken-burns, grain)
+ * Direction: modern, personal Verwaltung (Livit/Wincasa-light).
+ * Navy / white / restrained gold. Focus Zürich & Umgebung.
+ * No investment/development claims, no inflated stats or seniority claims.
  */
 
 import { LanguageProvider } from '@/components/language-context'

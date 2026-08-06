@@ -1,46 +1,47 @@
 'use client'
 
-import { useState } from 'react'
-import { ChevronDown, Building2, BookOpen, Wrench, Home } from 'lucide-react'
+import {
+  Building2,
+  Store,
+  BookOpen,
+  Wrench,
+  KeyRound,
+  MessagesSquare,
+  Handshake,
+} from 'lucide-react'
 import { Reveal } from './reveal'
 import { useLang } from './language-context'
 
 const services = [
   {
-    id: 'verwaltung',
+    id: 'mietliegenschaften',
     icon: Building2,
     titleDe: 'Verwaltung von Mietliegenschaften',
     titleEn: 'Rental property management',
     summaryDe:
-      'Laufende Betreuung Ihrer Liegenschaft: von der Mieterkommunikation bis zur Organisation des täglichen Betriebs, damit Sie den Überblick behalten ohne den Alltag zu führen.',
+      'Laufende Betreuung Ihrer Wohnliegenschaft: Mieterkommunikation, Organisation und Betrieb aus einer Hand.',
     summaryEn:
-      'Ongoing care of your property: from tenant communication to organising day-to-day operations, so you keep the overview without running the daily grind.',
-    itemsDe: null as string[] | null,
-    itemsEn: null as string[] | null,
+      'Ongoing care of your residential property: tenant communication, organisation and operations in one place.',
+  },
+  {
+    id: 'gewerbe',
+    icon: Store,
+    titleDe: 'Verwaltung von Gewerbe- und Retailflächen',
+    titleEn: 'Commercial & retail management',
+    summaryDe:
+      'Strukturierte Verwaltung von Geschäfts- und Ladenflächen mit klaren Abläufen für Eigentümer und Nutzer.',
+    summaryEn:
+      'Structured management of commercial and retail space with clear processes for owners and occupants.',
   },
   {
     id: 'kaufmaennisch',
     icon: BookOpen,
-    titleDe: 'Kaufmännische Verwaltung',
-    titleEn: 'Commercial administration',
+    titleDe: 'Kaufmännische Immobilienverwaltung',
+    titleEn: 'Commercial property administration',
     summaryDe:
-      'Strukturierte finanzielle und administrative Betreuung, damit Abrechnungen und Vorgänge nachvollziehbar bleiben.',
+      'Nachvollziehbare finanzielle und administrative Betreuung Ihrer Liegenschaft.',
     summaryEn:
-      'Structured financial and administrative management, so accounts and cases stay understandable.',
-    itemsDe: [
-      'Verwaltung von Mietverhältnissen',
-      'Korrespondenz mit Mietern',
-      'Rechnungsprüfung',
-      'Budgetplanung',
-      'Administrative Betreuung',
-    ],
-    itemsEn: [
-      'Tenancy management',
-      'Tenant correspondence',
-      'Invoice review',
-      'Budget planning',
-      'Administrative support',
-    ],
+      'Transparent financial and administrative management of your property.',
   },
   {
     id: 'technisch',
@@ -48,131 +49,53 @@ const services = [
     titleDe: 'Technische Betreuung',
     titleEn: 'Technical maintenance',
     summaryDe:
-      'Koordination von Unterhalt und Instandhaltung mit Handwerksbetrieben, proaktiv und dokumentiert, nicht nur im Notfall.',
+      'Koordination von Unterhalt und Instandhaltung mit Handwerksbetrieben, dokumentiert und lösungsorientiert.',
     summaryEn:
-      'Coordination of maintenance and upkeep with tradespeople, proactive and documented, not only in emergencies.',
-    itemsDe: [
-      'Koordination von Unterhaltsarbeiten',
-      'Organisation von Reparaturen',
-      'Zusammenarbeit mit Handwerksbetrieben',
-      'Laufende Kontrolle des Gebäudezustands',
-    ],
-    itemsEn: [
-      'Coordination of maintenance work',
-      'Organisation of repairs',
-      'Collaboration with tradespeople',
-      'Ongoing monitoring of building condition',
-    ],
+      'Coordination of maintenance and upkeep with tradespeople, documented and solution-oriented.',
   },
   {
     id: 'vermietung',
-    icon: Home,
-    titleDe: 'Vermietung',
-    titleEn: 'Letting & tenant placement',
+    icon: KeyRound,
+    titleDe: 'Vermietung und Wiedervermietung',
+    titleEn: 'Letting & re-letting',
     summaryDe:
-      'Von der Vermarktung bis zur Wohnungsübergabe, damit Leerstand kurz bleibt und der Prozess sauber dokumentiert ist.',
+      'Von der Vermarktung bis zur Übergabe, damit Leerstände kurz bleiben und der Prozess sauber dokumentiert ist.',
     summaryEn:
-      'From marketing to key handover, so vacancy stays short and the process is cleanly documented.',
-    itemsDe: [
-      'Vermarktung freier Objekte',
-      'Organisation von Besichtigungen',
-      'Auswahl geeigneter Mieter',
-      'Vorbereitung der Mietverträge',
-      'Wohnungsübergaben und -abnahmen',
-    ],
-    itemsEn: [
-      'Marketing of vacant units',
-      'Organising viewings',
-      'Selection of suitable tenants',
-      'Preparation of rental agreements',
-      'Property handovers and inspections',
-    ],
+      'From marketing to handover, so vacancies stay short and the process is cleanly documented.',
+  },
+  {
+    id: 'mieter',
+    icon: MessagesSquare,
+    titleDe: 'Kommunikation mit Mietern',
+    titleEn: 'Tenant communication',
+    summaryDe:
+      'Direkte, verbindliche Kommunikation mit Mietern, damit Anliegen klar und zeitnah bearbeitet werden.',
+    summaryEn:
+      'Direct, reliable communication with tenants, so requests are handled clearly and promptly.',
+  },
+  {
+    id: 'eigentuemer',
+    icon: Handshake,
+    titleDe: 'Persönliche Betreuung von Eigentümern',
+    titleEn: 'Personal owner care',
+    summaryDe:
+      'Ein Ansprechpartner, der Ihre Situation kennt, erreichbar bleibt und Verantwortung übernimmt.',
+    summaryEn:
+      'One contact who knows your situation, stays reachable and takes responsibility.',
   },
 ]
 
-function ServicePanel({
-  service,
-  index,
-}: {
-  service: (typeof services)[0]
-  index: number
-}) {
-  const { lang } = useLang()
-  const [open, setOpen] = useState(index === 1)
-  const Icon = service.icon
-  const title = lang === 'de' ? service.titleDe : service.titleEn
-  const summary = lang === 'de' ? service.summaryDe : service.summaryEn
-  const items = lang === 'de' ? service.itemsDe : service.itemsEn
-  const expandable = Boolean(items && items.length > 0)
-
-  const body = (
-    <>
-      <span className="flex-shrink-0 flex flex-col items-center gap-1 mt-0.5" aria-hidden="true">
-        <span className="text-[10px] font-mono text-ink-muted tracking-widest">
-          0{index + 1}
-        </span>
-        <span className="w-9 h-9 flex items-center justify-center rounded-sm bg-surface text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-200">
-          <Icon size={18} strokeWidth={1.5} />
-        </span>
-      </span>
-
-      <span className="flex-1 min-w-0">
-        <span className="block font-sans font-semibold text-xl md:text-2xl text-foreground mb-1 tracking-tight text-balance">
-          {title}
-        </span>
-        <span className="block text-sm leading-relaxed text-ink-muted text-pretty">
-          {summary}
-        </span>
-      </span>
-    </>
-  )
-
-  return (
-    <div className="border-b border-rule last:border-b-0">
-      {expandable ? (
-        <button
-          type="button"
-          className="group w-full flex items-start gap-5 py-7 text-left focus-visible:outline-none focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-ring"
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {body}
-          <ChevronDown
-            size={18}
-            className={`flex-shrink-0 mt-1.5 text-ink-muted transition-transform duration-300 ${
-              open ? 'rotate-180' : ''
-            }`}
-            aria-hidden="true"
-          />
-        </button>
-      ) : (
-        <div className="group flex items-start gap-5 py-7">{body}</div>
-      )}
-
-      {expandable && open && items && (
-        <ul className="pb-7 pl-14 md:pl-[68px] grid sm:grid-cols-2 gap-y-2 gap-x-8" role="list">
-          {items.map((item) => (
-            <li key={item} className="flex items-start gap-2.5 text-sm text-ink-muted">
-              <span
-                className="mt-[5px] flex-shrink-0 w-1 h-1 rounded-full bg-primary"
-                aria-hidden="true"
-              />
-              {item}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  )
-}
-
 export function Leistungen() {
-  const { t } = useLang()
+  const { lang, t } = useLang()
 
   return (
-    <section id="leistungen" className="py-24 md:py-32" aria-labelledby="leistungen-heading">
+    <section
+      id="leistungen"
+      className="py-28 md:py-40"
+      aria-labelledby="leistungen-heading"
+    >
       <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <Reveal className="mb-14 max-w-2xl">
+        <Reveal className="mb-16 md:mb-20 max-w-2xl">
           <p className="section-eyebrow mb-4">
             {t('Leistungen', 'Services')}
           </p>
@@ -181,25 +104,43 @@ export function Leistungen() {
             className="font-sans font-semibold text-3xl md:text-4xl lg:text-[2.75rem] tracking-tight text-foreground text-balance leading-[1.15]"
           >
             {t(
-              'Was wir konkret für Sie übernehmen.',
-              'What we concretely take on for you.'
+              'Immobilienverwaltung, die Eigentümer entlastet.',
+              'Property management that relieves owners.'
             )}
           </h2>
-          <p className="mt-4 text-base text-ink-muted leading-relaxed">
+          <p className="mt-5 text-base text-ink-muted leading-relaxed">
             {t(
-              'Kein Feature-Katalog um der Vollständigkeit willen, sondern die Aufgaben, die Eigentümer entlasten.',
-              'Not a feature catalogue for completeness, but the tasks that actually relieve owners.'
+              'Fokus auf Verwaltung, Vermietung und Betreuung, klar und persönlich.',
+              'Focused on management, letting and care, clear and personal.'
             )}
           </p>
         </Reveal>
 
-        <Reveal>
-          <div className="border-t border-rule" role="list">
-            {services.map((service, i) => (
-              <ServicePanel key={service.id} service={service} index={i} />
-            ))}
-          </div>
-        </Reveal>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 md:gap-y-14">
+          {services.map((service, i) => {
+            const Icon = service.icon
+            return (
+              <Reveal key={service.id} delayMs={i * 50}>
+                <article className="flex flex-col gap-4 h-full">
+                  <span
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-sm bg-surface text-primary border border-rule/70"
+                    aria-hidden="true"
+                  >
+                    <Icon size={18} strokeWidth={1.5} />
+                  </span>
+                  <div>
+                    <h3 className="font-sans font-semibold text-lg text-foreground mb-2 tracking-tight text-balance">
+                      {lang === 'de' ? service.titleDe : service.titleEn}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-ink-muted text-pretty">
+                      {lang === 'de' ? service.summaryDe : service.summaryEn}
+                    </p>
+                  </div>
+                </article>
+              </Reveal>
+            )
+          })}
+        </div>
       </div>
     </section>
   )

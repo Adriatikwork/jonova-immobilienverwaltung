@@ -12,36 +12,36 @@ const outcomes = [
     titleDe: 'Erreichbarkeit statt Hotline',
     titleEn: 'Reachable, not a hotline',
     bodyDe:
-      'Ein direkter Ansprechpartner begleitet Sie, ohne anonymes Callcenter. Erreichbarkeit ist für Eigentümer der häufigste Grund zu wechseln.',
+      'Ein direkter Ansprechpartner begleitet Sie, ohne anonymes Callcenter. Persönlich, klar und verbindlich.',
     bodyEn:
-      'A direct contact accompanies you, not an anonymous call centre. Reachability is the most common reason owners switch.',
+      'A direct contact accompanies you, not an anonymous call centre. Personal, clear and reliable.',
   },
   {
     number: '02',
     titleDe: 'Abrechnungen ohne Rätselraten',
     titleEn: 'Accounts without guesswork',
     bodyDe:
-      'Klare Abläufe und nachvollziehbare Kommunikation zu Mieten, Kosten und Vorgängen, damit Sie nicht hinterherlaufen müssen.',
+      'Klare Abläufe und nachvollziehbare Kommunikation zu Mieten, Kosten und Vorgängen.',
     bodyEn:
-      'Clear processes and understandable communication on rents, costs and cases, so you do not have to chase updates.',
+      'Clear processes and understandable communication on rents, costs and cases.',
   },
   {
     number: '03',
     titleDe: 'Alltag aus einer Hand',
     titleEn: 'Day-to-day from one desk',
     bodyDe:
-      'Mieteranliegen, Handwerkerkoordination und organisatorische Verwaltung: strukturiert, digital und lösungsorientiert.',
+      'Mieteranliegen, Handwerkerkoordination und organisatorische Verwaltung: strukturiert und lösungsorientiert.',
     bodyEn:
-      'Tenant requests, trades coordination and organisational management: structured, digital and solution-oriented.',
+      'Tenant requests, trades coordination and organisational management: structured and solution-oriented.',
   },
   {
     number: '04',
-    titleDe: 'Werterhalt im Blick',
-    titleEn: 'Value preservation in focus',
+    titleDe: 'Sorgfältige Betreuung',
+    titleEn: 'Careful stewardship',
     bodyDe:
-      'Unterhalt und Vermietung mit dem Ziel, Ihre Liegenschaft langfristig sorgfältig zu betreuen, nicht nur Probleme abzuarbeiten.',
+      'Unterhalt und Vermietung mit dem Ziel, Ihre Liegenschaft zuverlässig und langfristig zu betreuen.',
     bodyEn:
-      'Maintenance and letting with the aim of carefully looking after your property long-term, not only fixing problems.',
+      'Maintenance and letting with the aim of looking after your property reliably and for the long term.',
   },
 ]
 
@@ -51,23 +51,23 @@ export function WarumJonova() {
   return (
     <section
       id="warum"
-      className="bg-surface py-24 md:py-32"
+      className="bg-surface py-28 md:py-40"
       aria-labelledby="warum-heading"
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-start">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-14 lg:gap-20 items-start">
           <div>
-            <Reveal className="mb-12 max-w-xl">
+            <Reveal className="mb-14 max-w-xl">
               <p className="section-eyebrow mb-4">
-                {t('Warum Eigentümer wechseln', 'Why owners switch')}
+                {t('Warum JONOVA', 'Why JONOVA')}
               </p>
               <h2
                 id="warum-heading"
                 className="font-sans font-semibold text-3xl md:text-4xl lg:text-[2.75rem] tracking-tight text-foreground leading-[1.15] text-balance"
               >
                 {t(
-                  'Was Eigentümer wirklich erwarten.',
-                  'What owners actually expect.'
+                  'Modern, seriös und persönlich.',
+                  'Modern, serious and personal.'
                 )}
               </h2>
             </Reveal>
@@ -75,12 +75,12 @@ export function WarumJonova() {
             <div className="flex flex-col divide-y divide-rule/80">
               {outcomes.map((a, i) => (
                 <Reveal key={a.number} delayMs={i * 70}>
-                  <article className="group py-7 first:pt-0 last:pb-0 grid grid-cols-[2.5rem_1fr] gap-5 items-start">
-                    <span className="font-mono text-xs font-medium text-primary/70 mt-1.5 tabular-nums">
+                  <article className="group py-8 first:pt-0 last:pb-0 grid grid-cols-[2.5rem_1fr] gap-5 items-start">
+                    <span className="font-mono text-xs font-medium text-gold mt-1.5 tabular-nums">
                       {a.number}
                     </span>
                     <div>
-                      <h3 className="font-sans font-semibold text-lg md:text-xl text-foreground mb-2 tracking-tight group-hover:text-primary transition-colors duration-200">
+                      <h3 className="font-sans font-semibold text-lg md:text-xl text-foreground mb-2 tracking-tight">
                         {lang === 'de' ? a.titleDe : a.titleEn}
                       </h3>
                       <p className="text-sm leading-relaxed text-ink-muted text-pretty max-w-prose">
@@ -96,25 +96,25 @@ export function WarumJonova() {
           <Reveal delayMs={120} className="relative min-h-[360px] lg:min-h-[560px] lg:sticky lg:top-24">
             <div className="absolute inset-0 overflow-hidden rounded-sm">
               <img
-                src={optimizedFallback('about-exterior', EXTERIOR_WIDTHS)}
-                srcSet={optimizedSrcSet('about-exterior', EXTERIOR_WIDTHS)}
+                src={optimizedFallback('hero-building', EXTERIOR_WIDTHS)}
+                srcSet={optimizedSrcSet('hero-building', EXTERIOR_WIDTHS)}
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 alt={t(
-                  'Gepflegte Fassade einer Mietliegenschaft in der Schweiz',
-                  'Well-maintained facade of a rental property in Switzerland'
+                  'Modernes Mehrfamilienhaus unter professioneller Verwaltung',
+                  'Modern apartment building under professional management'
                 )}
                 loading="lazy"
                 decoding="async"
                 className="absolute inset-0 w-full h-full object-cover object-center"
               />
               <div
-                className="absolute inset-x-0 bottom-0 p-6 bg-[linear-gradient(to_top,rgba(18,28,24,0.72),transparent)]"
+                className="absolute inset-x-0 bottom-0 p-6 bg-[linear-gradient(to_top,rgba(18,36,58,0.72),transparent)]"
                 aria-hidden="true"
               >
                 <p className="text-sm text-hero-foreground/90 leading-snug max-w-[18rem]">
                   {t(
-                    'Persönliche Betreuung. Klare Prozesse. Schweizer Qualitätsanspruch.',
-                    'Personal support. Clear processes. Swiss standard of care.'
+                    'Persönliche Betreuung. Klare Prozesse. Fokus Zürich und Umgebung.',
+                    'Personal support. Clear processes. Focus on Zurich and the region.'
                   )}
                 </p>
               </div>

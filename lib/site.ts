@@ -11,36 +11,37 @@ export const SITE_URL =
   'https://adriatikwork.github.io/jonova-immobilienverwaltung'
 
 export const SITE_DESCRIPTION_DE =
-  'JONOVA Immobilienverwaltung: persönliche Betreuung von Mietliegenschaften in der Schweiz. Erreichbar, klare Abläufe, kaufmännisch und technisch.'
+  'JONOVA Immobilienverwaltung: persönliche Betreuung von Mietliegenschaften in Zürich und Umgebung. Modern, erreichbar und klar in den Abläufen.'
 
 export const SITE_DESCRIPTION_EN =
-  'JONOVA Immobilienverwaltung: personal management of rental properties in Switzerland. Reachable, clear processes, commercial and technical.'
+  'JONOVA Immobilienverwaltung: personal management of rental properties in Zurich and the surrounding region. Modern, reachable and clear in process.'
 
 export const SITE_KEYWORDS = [
-  'Immobilienverwaltung Schweiz', 
-  'Verwaltung Mietliegenschaften', 
-  'Kaufmännische Verwaltung', 
-  'Technische Betreuung Immobilie', 
-  'Vermietung Verwaltung', 
-  'JONOVA', 
-  'Property Management Switzerland', 
-  'Rental property management', 
+  'Immobilienverwaltung Zürich',
+  'Immobilienverwaltung Schweiz',
+  'Verwaltung Mietliegenschaften',
+  'Gewerbeverwaltung Zürich',
+  'Kaufmännische Immobilienverwaltung',
+  'Technische Betreuung Immobilie',
+  'Vermietung Verwaltung',
+  'JONOVA',
 ].join(', ')
 
-export const BRAND_COLOR = '#2E5946'
+/** Deep navy from brand logo */
+export const BRAND_COLOR = '#1A2F4A'
 
 /**
  * Contact details, single source of truth for UI + JSON-LD.
  * Leave phoneE164 empty until the client provides a real number (hides phone in UI/schema).
  */
 export const CONTACT = {
-  email: 'info@jonova-immo.ch', 
+  email: 'info@jonova-immo.ch',
   /** Shown only when non-empty */
-  phoneDisplay: '', 
-  phoneE164: '', 
-  areaServedDe: 'Schweiz', 
-  areaServedEn: 'Switzerland', 
-  country: 'CH', 
+  phoneDisplay: '',
+  phoneE164: '',
+  areaServedDe: 'Zürich und Umgebung',
+  areaServedEn: 'Zurich and surrounding region',
+  country: 'CH',
 } as const
 
 /**
@@ -49,11 +50,11 @@ export const CONTACT = {
  */
 export const LEGAL = {
   /** e.g. Einzelfirma / GmbH */
-  legalForm: '', 
-  responsibleName: '', 
-  street: '', 
-  postalCode: '', 
-  city: '', 
+  legalForm: '',
+  responsibleName: '',
+  street: '',
+  postalCode: '',
+  city: '',
   /** CHE-xxx.xxx.xxx MwSt-Nr. if applicable */
-  uid: '', 
+  uid: '',
 } as const

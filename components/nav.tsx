@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
+import { assetPath } from '@/lib/asset-path'
 import { useInquiry } from './inquiry-context'
 import { useLang } from './language-context'
 
@@ -31,7 +32,6 @@ export function Nav() {
   const linkTone = onDark
     ? 'text-hero-foreground/70 hover:text-hero-foreground'
     : 'text-ink-muted hover:text-foreground'
-  const brandTone = onDark ? 'text-hero-foreground' : 'text-foreground'
   const langIdle = onDark
     ? 'text-hero-foreground/65 hover:text-hero-foreground'
     : 'text-ink-muted hover:text-foreground'
@@ -49,16 +49,22 @@ export function Nav() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a
           href="#startseite"
-          className="flex items-baseline gap-2 group focus-visible:outline-none"
+          className="flex items-center gap-2.5 group focus-visible:outline-none"
           aria-label="JONOVA Immobilienverwaltung"
         >
-          <span
-            className="flex items-center justify-center w-8 h-8 rounded-sm bg-primary text-primary-foreground font-serif font-bold text-base select-none"
+          <img
+            src={assetPath('/images/logo.jpeg')}
+            alt=""
+            width={40}
+            height={40}
+            className="h-9 w-9 object-contain rounded-sm bg-white shadow-sm ring-1 ring-black/5"
             aria-hidden="true"
+          />
+          <span
+            className={`font-sans font-semibold text-sm tracking-[0.14em] uppercase ${
+              onDark ? 'text-hero-foreground' : 'text-foreground'
+            }`}
           >
-            J
-          </span>
-          <span className={`font-sans font-semibold text-sm tracking-wide ${brandTone}`}>
             JONOVA
           </span>
         </a>
@@ -108,7 +114,11 @@ export function Nav() {
           <button
             type="button"
             onClick={() => startInquiry()}
-            className="ml-1 px-4 py-2 rounded-sm bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className={`ml-1 px-4 py-2 rounded-sm text-sm font-medium border transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+              onDark
+                ? 'border-hero-foreground/40 text-hero-foreground hover:border-gold hover:bg-hero-foreground/8'
+                : 'border-primary/30 text-primary hover:border-gold hover:bg-surface'
+            }`}
           >
             {t('Anfrage', 'Enquire')}
           </button>
@@ -173,7 +183,7 @@ export function Nav() {
               setOpen(false)
               startInquiry()
             }}
-            className="w-full text-center px-4 py-3 bg-primary text-primary-foreground text-sm font-medium rounded-sm hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="w-full text-center px-4 py-3 border border-primary/30 text-primary text-sm font-medium rounded-sm hover:border-gold hover:bg-surface transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             {t('Unverbindliche Anfrage', 'Free enquiry')}
           </button>

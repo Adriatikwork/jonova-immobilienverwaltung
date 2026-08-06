@@ -33,9 +33,9 @@ const steps = [
     titleDe: 'Laufende Betreuung',
     titleEn: 'Ongoing support',
     bodyDe:
-      'Wir bleiben Ihr Ansprechpartner im Alltag: Mieter, Unterhalt, Organisation. Damit Sie nicht nachfragen müssen.',
+      'Wir bleiben Ihr Ansprechpartner im Alltag: Mieter, Unterhalt, Organisation.',
     bodyEn:
-      'We remain your contact in day-to-day operations: tenants, maintenance, organisation. So you do not have to chase.',
+      'We remain your contact in day-to-day operations: tenants, maintenance, organisation.',
   },
 ]
 
@@ -44,9 +44,13 @@ export function Ablauf() {
   const { startInquiry } = useInquiry()
 
   return (
-    <section id="ablauf" className="bg-surface py-24 md:py-32" aria-labelledby="ablauf-heading">
+    <section
+      id="ablauf"
+      className="bg-surface py-28 md:py-40"
+      aria-labelledby="ablauf-heading"
+    >
       <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <Reveal className="mb-14 max-w-xl">
+        <Reveal className="mb-16 md:mb-20 max-w-xl">
           <p className="section-eyebrow mb-4">
             {t('Ablauf', 'Process')}
           </p>
@@ -59,7 +63,7 @@ export function Ablauf() {
               'Four clear steps to ongoing management.'
             )}
           </h2>
-          <p className="mt-4 text-base text-ink-muted leading-relaxed">
+          <p className="mt-5 text-base text-ink-muted leading-relaxed">
             {t(
               'Von der ersten Anfrage bis zum Alltag, ohne Formular-Pingpong.',
               'From the first enquiry to day-to-day operations, without form ping-pong.'
@@ -67,12 +71,12 @@ export function Ablauf() {
           </p>
         </Reveal>
 
-        <ol className="grid md:grid-cols-4 gap-px bg-rule mb-12" role="list">
+        <ol className="grid md:grid-cols-4 gap-10 md:gap-8 mb-14" role="list">
           {steps.map((step, i) => (
-            <Reveal key={step.titleDe} delayMs={i * 80} as="li" className="bg-surface">
-              <div className="relative p-8 flex flex-col gap-4 h-full">
+            <Reveal key={step.titleDe} delayMs={i * 80} as="li">
+              <div className="relative flex flex-col gap-4 h-full">
                 <span
-                  className="font-mono text-5xl font-bold leading-none text-primary/15 select-none"
+                  className="font-mono text-sm font-medium text-gold tracking-widest"
                   aria-hidden="true"
                 >
                   {String(i + 1).padStart(2, '0')}
@@ -94,7 +98,7 @@ export function Ablauf() {
           <button
             type="button"
             onClick={() => startInquiry()}
-            className="inline-flex items-center justify-center px-7 py-3.5 bg-primary text-primary-foreground text-sm font-medium rounded-sm hover:bg-primary/90 active:scale-[0.98] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="btn-quiet"
           >
             {t('Erstgespräch anfragen', 'Request an initial conversation')}
           </button>
