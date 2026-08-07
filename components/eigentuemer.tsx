@@ -2,6 +2,7 @@
 
 import { Building2, Store, Handshake } from 'lucide-react'
 import { Reveal } from './reveal'
+import { SpotlightCard } from './spotlight-card'
 import { useInquiry, type PropertyType } from './inquiry-context'
 import { useLang } from './language-context'
 
@@ -85,13 +86,13 @@ export function Eigentuemer() {
           </p>
         </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-10 md:gap-12">
+        <div className="-mx-5 grid md:grid-cols-3 gap-2">
           {paths.map((path, i) => {
             const Icon = path.icon
             return (
               <Reveal key={path.type} delayMs={i * 90}>
-                <article className="h-full flex flex-col">
-                  <span className="mb-6 inline-flex h-10 w-10 items-center justify-center rounded-sm bg-surface text-primary border border-rule/70">
+                <SpotlightCard as="article" className="h-full flex flex-col p-5">
+                  <span className="spotlight-icon mb-6 inline-flex h-10 w-10 items-center justify-center rounded-sm bg-surface text-primary border border-rule/70">
                     <Icon size={20} strokeWidth={1.5} aria-hidden="true" />
                   </span>
                   <h3 className="font-sans font-semibold text-xl text-foreground mb-3 tracking-tight">
@@ -107,7 +108,7 @@ export function Eigentuemer() {
                   >
                     {lang === 'de' ? path.ctaDe : path.ctaEn}
                   </button>
-                </article>
+                </SpotlightCard>
               </Reveal>
             )
           })}

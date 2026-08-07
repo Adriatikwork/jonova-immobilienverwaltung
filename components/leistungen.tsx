@@ -10,6 +10,7 @@ import {
   Handshake,
 } from 'lucide-react'
 import { Reveal } from './reveal'
+import { SpotlightCard } from './spotlight-card'
 import { useLang } from './language-context'
 
 const services = [
@@ -116,14 +117,16 @@ export function Leistungen() {
           </p>
         </Reveal>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 md:gap-y-14">
+        {/* Negative inset lets each card carry its own hover padding while the
+            text stays optically aligned with the section heading. */}
+        <div className="-mx-5 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-0 gap-y-4">
           {services.map((service, i) => {
             const Icon = service.icon
             return (
               <Reveal key={service.id} delayMs={i * 50}>
-                <article className="flex flex-col gap-4 h-full">
+                <SpotlightCard as="article" className="flex flex-col gap-4 h-full p-5">
                   <span
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-sm bg-surface text-primary border border-rule/70"
+                    className="spotlight-icon inline-flex h-10 w-10 items-center justify-center rounded-sm bg-surface text-primary border border-rule/70"
                     aria-hidden="true"
                   >
                     <Icon size={18} strokeWidth={1.5} />
@@ -136,7 +139,7 @@ export function Leistungen() {
                       {lang === 'de' ? service.summaryDe : service.summaryEn}
                     </p>
                   </div>
-                </article>
+                </SpotlightCard>
               </Reveal>
             )
           })}

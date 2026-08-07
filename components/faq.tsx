@@ -40,13 +40,17 @@ export function Faq() {
           <div className="border-t border-rule">
             {FAQ_ITEMS.map((faq, i) => {
               const open = openId === i
+              const panelId = `faq-panel-${i}`
+              const buttonId = `faq-button-${i}`
               return (
                 <Reveal key={faq.qDe} delayMs={i * 40}>
                   <div className="border-b border-rule">
                     <button
                       type="button"
+                      id={buttonId}
                       className="group w-full flex items-start justify-between gap-6 py-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                       aria-expanded={open}
+                      aria-controls={panelId}
                       onClick={() => setOpenId(open ? null : i)}
                     >
                       <span className="font-sans font-medium text-base md:text-lg text-foreground tracking-tight group-hover:text-primary transition-colors">
@@ -60,11 +64,23 @@ export function Faq() {
                         aria-hidden="true"
                       />
                     </button>
-                    {open && (
-                      <p className="pb-6 pr-10 text-sm leading-relaxed text-ink-muted text-pretty max-w-2xl">
-                        {lang === 'de' ? faq.aDe : faq.aEn}
-                      </p>
-                    )}
+                    {/* Animating grid rows between 0fr and 1fr gives a smooth
+                        open/close without having to measure the answer. */}
+                    <div
+                      id={panelId}
+                      role="region"
+                      aria-labelledby={buttonId}
+                      inert={!open}
+                      className={`grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none ${
+                        open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <p className="pb-6 pr-10 text-sm leading-relaxed text-ink-muted text-pretty max-w-2xl">
+                          {lang === 'de' ? faq.aDe : faq.aEn}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </Reveal>
               )

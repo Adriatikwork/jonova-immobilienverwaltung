@@ -176,33 +176,43 @@ export function Nav() {
         </div>
       </div>
 
-      {open && (
-        <nav
-          aria-label={t('Mobile Navigation', 'Mobile navigation')}
-          className="lg:hidden bg-background border-t border-rule px-6 py-5 flex flex-col gap-5"
-        >
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="text-base font-medium text-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:text-primary"
-            >
-              {lang === 'de' ? l.de : l.en}
-            </a>
-          ))}
-          <button
-            type="button"
-            onClick={() => {
-              setOpen(false)
-              startInquiry()
-            }}
-            className="w-full text-center px-4 py-3 border border-primary/30 text-primary text-sm font-medium rounded-sm hover:border-gold hover:bg-surface transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      {/* Kept mounted and collapsed via grid rows so opening and closing the
+          drawer eases instead of snapping. `inert` keeps the links out of the
+          tab order while it is shut. */}
+      <div
+        inert={!open}
+        className={`lg:hidden grid transition-[grid-template-rows,opacity] duration-300 ease-out motion-reduce:transition-none ${
+          open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+        }`}
+      >
+        <div className="overflow-hidden">
+          <nav
+            aria-label={t('Mobile Navigation', 'Mobile navigation')}
+            className="bg-background border-t border-rule px-6 py-5 flex flex-col gap-5"
           >
-            {t('Unverbindliche Anfrage', 'Free enquiry')}
-          </button>
-        </nav>
-      )}
+            {links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="text-base font-medium text-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:text-primary"
+              >
+                {lang === 'de' ? l.de : l.en}
+              </a>
+            ))}
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false)
+                startInquiry()
+              }}
+              className="w-full text-center px-4 py-3 border border-primary/30 text-primary text-sm font-medium rounded-sm hover:border-gold hover:bg-surface transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              {t('Unverbindliche Anfrage', 'Free enquiry')}
+            </button>
+          </nav>
+        </div>
+      </div>
     </header>
   )
 }

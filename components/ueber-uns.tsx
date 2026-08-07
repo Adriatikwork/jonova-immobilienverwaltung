@@ -19,7 +19,7 @@ export function UeberUns() {
         <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-14 lg:gap-20 items-center">
           <Reveal>
             <div className="grid grid-cols-2 gap-3">
-              <div className="relative overflow-hidden aspect-[3/4] col-span-2 sm:col-span-1 sm:row-span-2 sm:min-h-[380px]">
+              <div className="glare-media relative overflow-hidden aspect-[3/4] col-span-2 sm:col-span-1 sm:row-span-2 sm:min-h-[380px]">
                 <img
                   src={optimizedFallback('about-exterior', THUMB_WIDTHS)}
                   srcSet={optimizedSrcSet('about-exterior', THUMB_WIDTHS)}
@@ -33,7 +33,7 @@ export function UeberUns() {
                   className="absolute inset-0 w-full h-full object-cover object-center"
                 />
               </div>
-              <div className="relative overflow-hidden aspect-square hidden sm:block">
+              <div className="glare-media relative overflow-hidden aspect-square hidden sm:block">
                 <img
                   src={optimizedFallback('about-commercial', THUMB_WIDTHS)}
                   srcSet={optimizedSrcSet('about-commercial', THUMB_WIDTHS)}
@@ -47,7 +47,7 @@ export function UeberUns() {
                   className="absolute inset-0 w-full h-full object-cover object-center"
                 />
               </div>
-              <div className="relative overflow-hidden aspect-square col-span-2 sm:col-span-1">
+              <div className="glare-media relative overflow-hidden aspect-square col-span-2 sm:col-span-1">
                 <img
                   src={optimizedFallback('about-interior', THUMB_WIDTHS)}
                   srcSet={optimizedSrcSet('about-interior', THUMB_WIDTHS)}
