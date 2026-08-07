@@ -34,7 +34,7 @@ export function Hero() {
             )}
             fetchPriority="high"
             decoding="async"
-            className="absolute inset-0 w-full h-full object-cover object-[center_35%] hero-image-motion"
+            className="absolute inset-0 w-full h-full object-cover object-[60%_center] hero-image-motion"
           />
         </picture>
         <div

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Instrument_Sans, Playfair_Display } from 'next/font/google'
 import { JonovaJsonLd } from '@/components/json-ld'
+import { assetPath } from '@/lib/asset-path'
 import {
   BRAND_COLOR,
   SITE_DESCRIPTION_DE,
@@ -74,13 +75,15 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: assetPath('/favicon.ico'), sizes: 'any' },
+      { url: assetPath('/favicon-32x32.png'), type: 'image/png', sizes: '32x32' },
+      { url: assetPath('/icon-192.png'), type: 'image/png', sizes: '192x192' },
+      { url: assetPath('/icon-512.png'), type: 'image/png', sizes: '512x512' },
     ],
-    apple: '/apple-touch-icon.png',
-    shortcut: '/favicon.ico',
+    apple: [{ url: assetPath('/apple-touch-icon.png'), sizes: '180x180' }],
+    shortcut: assetPath('/favicon.ico'),
   },
-  manifest: '/manifest.json',
+  manifest: assetPath('/manifest.json'),
   // No hreflang until separate locale URLs exist (client DE|EN toggle shares one URL)
   alternates: {
     canonical: '/',
@@ -116,11 +119,21 @@ export default function RootLayout({
         <meta name="geo.placename" content="Zürich" />
         <meta name="MobileOptimized" content="width" />
         <meta name="HandheldFriendly" content="true" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content={SITE_NAME_SHORT} />
         <meta name="format-detection" content="telephone=yes" />
+
+        {/* Duplicated alongside the metadata export: static export on a project
+            subpath needs the basePath baked into every icon URL. */}
+        <link rel="icon" type="image/x-icon" sizes="any" href={assetPath('/favicon.ico')} />
+        <link rel="icon" type="image/png" sizes="32x32" href={assetPath('/favicon-32x32.png')} />
+        <link rel="icon" type="image/png" sizes="192x192" href={assetPath('/icon-192.png')} />
+        <link rel="apple-touch-icon" sizes="180x180" href={assetPath('/apple-touch-icon.png')} />
+
         <meta name="msapplication-TileColor" content={BRAND_COLOR} />
+        <meta name="msapplication-TileImage" content={assetPath('/icon-192.png')} />
         <JonovaJsonLd />
       </head>
       <body

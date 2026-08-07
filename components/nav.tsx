@@ -52,14 +52,28 @@ export function Nav() {
           className="flex items-center gap-2.5 group focus-visible:outline-none"
           aria-label="JONOVA Immobilienverwaltung"
         >
-          <img
-            src={assetPath('/images/logo.jpeg')}
-            alt=""
-            width={40}
-            height={40}
-            className="h-9 w-9 object-contain rounded-sm bg-white shadow-sm ring-1 ring-black/5"
-            aria-hidden="true"
-          />
+          {/* Both marks stay mounted and cross-fade, so the swap on scroll
+              never leaves an empty gap while the second file loads. */}
+          <span className="relative block h-9 w-9 shrink-0" aria-hidden="true">
+            <img
+              src={assetPath('/logo-mark-light.png')}
+              alt=""
+              width={36}
+              height={36}
+              className={`absolute inset-0 h-9 w-9 object-contain transition-opacity duration-300 ${
+                onDark ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+            <img
+              src={assetPath('/logo-mark.png')}
+              alt=""
+              width={36}
+              height={36}
+              className={`absolute inset-0 h-9 w-9 object-contain transition-opacity duration-300 ${
+                onDark ? 'opacity-0' : 'opacity-100'
+              }`}
+            />
+          </span>
           <span
             className={`font-sans font-semibold text-sm tracking-[0.14em] uppercase ${
               onDark ? 'text-hero-foreground' : 'text-foreground'

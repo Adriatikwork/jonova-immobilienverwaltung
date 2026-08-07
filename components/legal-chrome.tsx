@@ -26,11 +26,11 @@ function LegalChromeInner({
             aria-label={SITE_NAME}
           >
             <img
-              src={assetPath('/images/logo.jpeg')}
+              src={assetPath('/logo-mark.png')}
               alt=""
               width={36}
               height={36}
-              className="h-9 w-9 object-contain rounded-sm bg-white shadow-sm ring-1 ring-black/5"
+              className="h-9 w-9 object-contain"
               aria-hidden="true"
             />
             <span className="font-sans font-semibold text-sm tracking-[0.14em] uppercase text-foreground">

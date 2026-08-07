@@ -38,7 +38,7 @@ export function JonovaJsonLd() {
     url: `${SITE_URL}/`,
     email: CONTACT.email,
     image: `${SITE_URL}/og-image.jpg`,
-    logo: `${SITE_URL}/images/logo.jpeg`,
+    logo: `${SITE_URL}/icon-512.png`,
     areaServed: [
       {
         '@type': 'AdministrativeArea',

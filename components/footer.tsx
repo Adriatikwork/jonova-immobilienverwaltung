@@ -28,11 +28,11 @@ export function Footer() {
           <div className="flex flex-col gap-4 max-w-sm">
             <div className="flex items-center gap-3">
               <img
-                src={assetPath('/images/logo.jpeg')}
+                src={assetPath('/logo-mark-light.png')}
                 alt=""
                 width={40}
                 height={40}
-                className="h-10 w-10 object-contain rounded-sm bg-white"
+                className="h-10 w-10 object-contain"
                 aria-hidden="true"
               />
               <div>

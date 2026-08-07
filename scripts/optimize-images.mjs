@@ -67,6 +67,19 @@ async function optimize(file) {
   return generated
 }
 
+/** Social preview, derived from the hero so the two never drift apart. */
+async function buildOgImage() {
+  const src = path.join(imagesDir, 'hero-building.png')
+  const out = path.join(publicDir, 'og-image.jpg')
+  if (await isUpToDate(src, out)) return 0
+
+  await sharp(src)
+    .resize(1200, 630, { fit: 'cover', position: 'attention' })
+    .jpeg({ quality: 82, mozjpeg: true })
+    .toFile(out)
+  return 1
+}
+
 async function main() {
   await fs.mkdir(outDir, { recursive: true })
 
@@ -82,6 +95,8 @@ async function main() {
     }
     generated += await optimize(file)
   }
+
+  generated += await buildOgImage()
 
   console.log(
     `[optimize-images] ${SOURCES.length} source images checked, ${generated} variants (re)generated` +
